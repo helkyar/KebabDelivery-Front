@@ -3,16 +3,18 @@ import reactDom from "react-dom";
 import { useState } from "react";
 
 const Modal = ({ onOpen, setOnOpen, children }) => {
-  const onClose = () => {
+  const onClose = (e) => {
     setOnOpen(false);
   };
 
   return reactDom.createPortal(
     <>
       {onOpen ? (
-        <div className="modal-container" onClick={onClose}>
-          <div className="modal" onClick={(e) => e.stopPropagation()}>
-            <p onClick={onClose}>X</p>
+        <div className="modal-container" onMouseDown={onClose}>
+          <div className="modal" onMouseDown={(e) => e.stopPropagation()}>
+            <button onClick={onClose} className="button-primary">
+              X
+            </button>
             {children}
           </div>
         </div>

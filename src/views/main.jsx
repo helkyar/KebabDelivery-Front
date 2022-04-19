@@ -16,6 +16,9 @@ const Main = () => {
       {/* put like posps two state (onOpen and setOnOpen) tha defined in this componente  */}
       <Modal onOpen={onOpen} setOnOpen={setOnOpen}>
         hola
+        <p>
+          fjdklsjafkljdklfjasldjhfkldsahjfhewfhjhfakjshdjfhawjehjhdjkbnfjksadhfjdhfjahsdjfhdkfalshdkj
+        </p>
       </Modal>
     </div>
   );
