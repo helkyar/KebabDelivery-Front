@@ -1,0 +1,14 @@
+.session-form {
+  width: 30%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.session-form > input {
+  margin-bottom: 1rem;
+}
+.session-btn {
+  margin-top: 1rem;
+  width: 6rem;
+  margin-left: calc(50% - 3rem);
+}

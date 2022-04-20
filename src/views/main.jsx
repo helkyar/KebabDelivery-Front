@@ -1,10 +1,13 @@
-import React from "react";
-import { useState } from "react";
+import { useState, React } from "react";
 import ButtonCard from "../components/buttoms/ButtonCard";
 import Modal from "../components/modal/Modal";
+import { useNavigate } from "react-router";
+// import { useSession } from "helpers/session/useSession";
 
-const Main = () => {
+export const Main = () => {
   const [onOpen, setOnOpen] = useState(false);
+  const navigate = useNavigate();
+  // const { logout } = useSession();
   return (
     <div className="app">
       <button
@@ -22,7 +25,9 @@ const Main = () => {
       <ButtonCard size="big" titleButton="ejemplo de deliveri">
         <p>texto de prueba</p>
       </ButtonCard>
+
+      {/* <button onClick={() => navigate("/template")}>templates</button> */}
+      {/* <button onClick={() => logout()}>logout</button> */}
     </div>
   );
 };
-export default Main;
