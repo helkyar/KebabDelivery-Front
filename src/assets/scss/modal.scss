@@ -22,11 +22,15 @@
     height: -webkit-min-content;
     height: -moz-min-content;
     height: min-content;
-    width: 250px;
-    border-radius: 11px;
+    min-width: 200px;
+    max-width: 300px;
+    border-radius: 8px;
     z-index: 3000;
-    padding: 2rem;
+    padding: 1.5rem;
     background-color: $background;
     overflow-wrap: break-word;
+    @media (min-width: 450px) {
+      max-width: 450px;
+    }
   }
 }

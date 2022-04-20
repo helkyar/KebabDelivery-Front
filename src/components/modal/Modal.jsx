@@ -1,9 +1,9 @@
 import React from "react";
 import reactDom from "react-dom";
-import { useState } from "react";
-
+// onOpen and setOnOpen= is the component that you pass to show or not the modal
+// children= what you want to display inside the modal
 const Modal = ({ onOpen, setOnOpen, children }) => {
-  const onClose = (e) => {
+  const onClose = () => {
     setOnOpen(false);
   };
 

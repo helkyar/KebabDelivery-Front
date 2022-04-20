@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import ButtonCard from "../components/buttoms/ButtonCard";
 import Modal from "../components/modal/Modal";
 
 const Main = () => {
@@ -13,13 +14,14 @@ const Main = () => {
       >
         modal
       </button>
-      {/* put like posps two state (onOpen and setOnOpen) tha defined in this componente  */}
+      {/* put like props two state (onOpen and setOnOpen) that will open or close de modal  */}
       <Modal onOpen={onOpen} setOnOpen={setOnOpen}>
-        hola
-        <p>
-          fjdklsjafkljdklfjasldjhfkldsahjfhewfhjhfakjshdjfhawjehjhdjkbnfjksadhfjdhfjahsdjfhdkfalshdkj
-        </p>
+        <p>hdkfalshdkj</p>
       </Modal>
+
+      <ButtonCard size="big" titleButton="ejemplo de deliveri">
+        <p>texto de prueba</p>
+      </ButtonCard>
     </div>
   );
 };
