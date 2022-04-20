@@ -28,7 +28,7 @@ export const Template = () => {
   return (
     <div>
       <h1>Template</h1>
-      <button onClick={() => navigate("/")}>back</button>
+      {/* <button onClick={() => navigate("/")}>back</button> */}
       <button onClick={() => get()}>get</button>
       <button onClick={() => post()}>post</button>
       <button onClick={() => patch()}>patch</button>

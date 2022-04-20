@@ -23,3 +23,23 @@ code {
 #hidden {
   display: none;
 }
+.button {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  border-radius: 8px;
+  background-color: $primaryColor;
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  padding: 10px 15px;
+  min-width: 240px;
+  min-height: 45px;
+  margin: 10px;
+}
+.secondary-button {
+  background-color: #fff;
+  color: $primaryColor;
+  border: 2px solid $primaryColor;
+}
