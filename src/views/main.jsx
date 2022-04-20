@@ -1,9 +1,9 @@
-import React from "react";
+import { useSession } from "helpers/session/useSession";
+import React from "react";import { useNavigate } from "react-router";
 import { useState } from "react";
 import ButtonCard from "../components/buttoms/ButtonCard";
 import Modal from "../components/modal/Modal";
-
-const Main = () => {
+export const Main = () => {
   const [onOpen, setOnOpen] = useState(false);
   return (
     <div className="app">
@@ -22,7 +22,8 @@ const Main = () => {
       <ButtonCard size="big" titleButton="ejemplo de deliveri">
         <p>texto de prueba</p>
       </ButtonCard>
+
     </div>
   );
 };
-export default Main;
+
