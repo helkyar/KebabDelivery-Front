@@ -7,24 +7,25 @@
 }
 
 .button-card {
-  cursor: pointer;
-  background-color: #fff;
+  // cursor: pointer;
+  background-color: $secondaryColor;
   border: 2px solid $primaryColor;
   border-radius: 8px;
   height: 170px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow-y: hidden;
-  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // overflow-y: hidden;
+  box-shadow: $shadowButtons;
+  text-decoration: none;
+  // display: block;
+  // text-align: center;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: $primaryColor;
+  max-width: 100%;
 
-  .text-button-card {
-    text-align: center;
-    font-size: 32px;
-    text-transform: uppercase;
-    color: $primaryColor;
-    width: 80%;
-  }
   &:active {
     box-shadow: unset;
   }
@@ -39,7 +40,7 @@
 .desplegable-button-card {
   position: relative;
   top: -8px;
-  background-color: #fff;
+  background-color: $secondaryColor;
   padding: 1rem;
   height: -webkit-min-content;
   height: -moz-min-content;

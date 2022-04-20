@@ -9,9 +9,12 @@ const ButtonCard = ({ children, size, titleButton }) => {
   };
   return (
     <div className="container-button-card">
-      <div className={`button-card ${size} `} onClick={hadlerClick}>
-        <h4 className="text-button-card">{titleButton}</h4>
-      </div>
+      <button
+        className={`button-card ${size} button-secondary`}
+        onClick={hadlerClick}
+      >
+        {titleButton}
+      </button>
       {onOpen ? (
         <div className="desplegable-button-card">{children}</div>
       ) : null}

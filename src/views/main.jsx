@@ -17,7 +17,7 @@ export const Main = () => {
           setOnOpen(true);
         }}
       >
-        siguiente
+        iniciar sesion
       </button>
       {/* put like props two state (onOpen and setOnOpen) that will open or close de modal  */}
       <Modal onOpen={onOpen} setOnOpen={setOnOpen}>
