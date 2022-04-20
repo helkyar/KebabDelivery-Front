@@ -8,6 +8,10 @@ import { Error } from "./views/Error";
 // import { Redirect } from "./components/Redirect";
 // Context ___________________________________
 import { UserContextProvider } from "./contexts/user";
+<<<<<<< HEAD
+=======
+
+>>>>>>> ba700fb890da49a868793f1cbd4b68a05cd2166c
 
 function App() {
   return (
