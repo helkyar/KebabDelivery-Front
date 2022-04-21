@@ -1,0 +1,76 @@
+.container-button-card {
+  position: relative;
+  width: 300px;
+  margin: 2rem auto;
+  border-radius: 8px;
+  overflow-wrap: break-word;
+}
+
+.button-card {
+  // cursor: pointer;
+  background-color: $secondaryColor;
+  border: 2px solid $primaryColor;
+  border-radius: 8px;
+  height: 170px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+  // overflow-y: hidden;
+  box-shadow: $shadowButtons;
+  text-decoration: none;
+  // display: block;
+  // text-align: center;
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: $primaryColor;
+  max-width: 100%;
+
+  &:active {
+    box-shadow: unset;
+  }
+}
+
+.big {
+  height: 170px;
+}
+.small {
+  height: 90px;
+}
+.desplegable-button-card {
+  position: relative;
+  top: -8px;
+  background-color: $secondaryColor;
+  padding: 1rem;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  min-height: 200px;
+  z-index: -100;
+  -webkit-animation-duration: 0.4s;
+  animation-duration: 0.4s;
+  -webkit-animation-name: slidein;
+  animation-name: slidein;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+@-webkit-keyframes slidein {
+  0% {
+    transform: translateY(-20%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slidein {
+  0% {
+    transform: translateY(-20%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}

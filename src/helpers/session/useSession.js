@@ -23,7 +23,7 @@ export const useSession = () => {
           console.error(err);
         });
     },
-    [setJWT]
+    [setJWT],
   );
 
   const logout = useCallback(() => {

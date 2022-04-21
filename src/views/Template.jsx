@@ -22,13 +22,13 @@ export const Template = () => {
     await patchTemplate(
       { column1: "paco", column2: "jose" },
       "9c1f94bc-73d7-4705-b95e-c826eef497b1",
-      jwt
+      jwt,
     );
   };
   return (
     <div>
       <h1>Template</h1>
-      <button onClick={() => navigate("/")}>back</button>
+      {/* <button onClick={() => navigate("/")}>back</button> */}
       <button onClick={() => get()}>get</button>
       <button onClick={() => post()}>post</button>
       <button onClick={() => patch()}>patch</button>

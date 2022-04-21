@@ -1,19 +1,19 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-* + * {
-  margin-top: 1rem;
-}
-:root {
-}
+// variables
+$background: #e5e5e5;
+$primaryColor: #ff8c60;
+$secondaryColor: #ffffff;
+$placeholder: #9b9b9b;
+$colorText: #2e2e2e;
+$shadowButtons: 0px 0px 16px rgba(0, 0, 0, 0.25);
 // React Legacy Styles
+* {
+  font-family: "Roboto", sans-serif;
+}
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $background;
 }
 
 code {
@@ -23,4 +23,29 @@ code {
 
 #hidden {
   display: none;
+}
+.button {
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: $primaryColor;
+  color: $secondaryColor;
+  text-transform: uppercase;
+  border: none;
+  padding: 10px 15px;
+  min-width: 207px;
+  max-width: 100%;
+  margin: 10px;
+  box-shadow: $shadowButtons;
+  @media (min-width: 450px) {
+    min-width: 240px;
+    min-height: 45px;
+    font-size: 18px;
+  }
+}
+.secondary-button {
+  background-color: $secondaryColor;
+  color: $primaryColor;
+  border: 2px solid $primaryColor;
 }
