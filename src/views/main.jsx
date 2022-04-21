@@ -1,14 +1,14 @@
 import { useState, React } from "react";
 import ButtonCard from "../components/buttoms/ButtonCard";
 import Modal from "../components/modal/Modal";
-// import { useNavigate } from "react-router";
-// import { Template } from "views/Template";
-// import { useSession } from "helpers/session/useSession";
+import { useNavigate } from "react-router";
+import { Template } from "views/Template";
+import { useSession } from "helpers/session/useSession";
 
 export const Main = () => {
   const [onOpen, setOnOpen] = useState(false);
-  // const navigate = useNavigate();
-  // const { logout } = useSession();
+  const navigate = useNavigate();
+  const { logout } = useSession();
   return (
     <div className="app">
       <button
@@ -28,8 +28,8 @@ export const Main = () => {
         <p>texto de prueba</p>
       </ButtonCard>
 
-      {/* <button onClick={() => navigate("/template")}>templates</button> */}
-      {/* <button onClick={() => logout()}>logout</button> */}
+      <button onClick={() => navigate("/template")}>templates</button>
+      <button onClick={() => logout()}>logout</button>
     </div>
   );
 };
