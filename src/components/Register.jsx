@@ -5,18 +5,20 @@ import { useSession } from "helpers/session/useSession";
 
 export const Register = () => {
   const navigate = useNavigate();
+  const [nombre, setName] = useState("");
   const [username, setUsername] = useState("");
+  const [correo, setCorreo] = useState("");
   const [password, setPassword] = useState("");
   const { loger, isLogged } = useSession();
 
   const userRegister = async (e) => {
     e.preventDefault();
     //(!) Validation logic: should be separated form the view
-    if (!username.trim() || !password.trim()) {
+    if (!nombre.trim() || !password.trim()) {
       console.log("Introduce valid credentials");
       return;
     }
-    const credentials = { username, password };
+    const credentials = { nombre,  username, correo, password, };
     //------------------------------------------------------
     await register(credentials, "register");
 
@@ -34,11 +36,26 @@ export const Register = () => {
     <>
       <form className="register-form session-form" onSubmit={userRegister}>
         <input
+          className="register-nombre"
+          placeholder="nombre"
+          type="text"
+          value={nombre}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
           className="register-username"
           placeholder="username"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+        
+        />
+        <input
+          className="register-correo"
+          placeholder="correo"
+          type="text"
+          value={correo}
+          onChange={(e) => setCorreo(e.target.value)}
         />
         <input
           className="register-password"
