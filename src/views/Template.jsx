@@ -1,8 +1,8 @@
 import Context from "contexts/user";
-import delTemplate from "helpers/delTemplate";
-import getTemplate from "helpers/getTemplate";
-import patchTemplate from "helpers/patchTemplate";
-import postTemplate from "helpers/postTemplate";
+import delTemplate from "helpers/templates/delTemplate";
+import getTemplate from "helpers/templates/getTemplate";
+import patchTemplate from "helpers/templates/patchTemplate";
+import postTemplate from "helpers/templates/postTemplate";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router";
 
@@ -22,7 +22,7 @@ export const Template = () => {
     await patchTemplate(
       { column1: "paco", column2: "jose" },
       "9c1f94bc-73d7-4705-b95e-c826eef497b1",
-      jwt,
+      jwt
     );
   };
   return (
