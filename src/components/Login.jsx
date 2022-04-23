@@ -32,6 +32,7 @@ export const Login = () => {
 
   return (
     <>
+    <p className="modal-login-title">Inicia Sesion</p>
       <form className="login-form session-form" onSubmit={userLogin}>
         <input
           className="login-username"
