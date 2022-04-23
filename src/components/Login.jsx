@@ -47,7 +47,7 @@ export const Login = () => {
           value={pswd}
           onChange={(e) => setPswd(e.target.value)}
         />
-        <button onClick={(e) => userLogin(e)}>Login</button>
+        <button className="login-button button" onClick={(e) => userLogin(e)}>Iniciar Sesion</button>
       </form>
     </>
   );

@@ -4,7 +4,7 @@ import Modal from "../components/modal/Modal";
 import { useNavigate } from "react-router";
 import { Template } from "views/Template";
 import { useSession } from "helpers/session/useSession";
-
+import { Login } from "../components/Login";
 export const Main = () => {
   const [onOpen, setOnOpen] = useState(false);
   const navigate = useNavigate();
@@ -20,8 +20,9 @@ export const Main = () => {
         iniciar sesion
       </button>
       {/* put like props two state (onOpen and setOnOpen) that will open or close de modal  */}
-      <Modal onOpen={onOpen} setOnOpen={setOnOpen}>
-        <button>{/* <Template></Template> */}</button>
+      <Modal onOpen={onOpen} setOnOpen={setOnOpen} >
+        <p className="modal-login-title">Inicia sesión</p>
+        <Login />
       </Modal>
 
       <ButtonCard size="big" titleButton="ejemplo de deliveri">
