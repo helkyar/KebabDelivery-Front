@@ -4,7 +4,7 @@ $primaryColor: #ff8c60;
 $secondaryColor: #ffffff;
 $placeholder: #9b9b9b;
 $colorText: #2e2e2e;
-$shadowButtons: 0px 0px 16px rgba(0, 0, 0, 0.25);
+$shadowButtons: 0px 4px 16px rgba(0, 0, 0, 0.25);
 // React Legacy Styles
 * {
   font-family: "Roboto", sans-serif;
@@ -30,6 +30,9 @@ button {
   text-decoration: none;
   border: none;
 }
+button:focus-visible {
+  outline: 2px solid #6f6f6f;
+}
 .button {
   font-weight: 400;
   font-size: 16px;
@@ -45,6 +48,7 @@ button {
   &:active {
     box-shadow: unset;
   }
+
   @media (min-width: 450px) {
     width: 240px;
     min-height: 45px;

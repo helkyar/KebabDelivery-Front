@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import changeIcon from "assets/img/changeIcon.svg";
+import {
+  getStorageCart,
+  setStorageCart,
+} from "helpers/localStorage/storageCart";
 
 export const Destination = () => {
-  const [basket, setBasket] = useState({ from: "", to: "" });
+  const [basket, setBasket] = useState(getStorageCart());
   const [rotate, setRotate] = useState(true);
 
   const handleChange = (e) => {
@@ -13,16 +17,23 @@ export const Destination = () => {
     }
   };
 
-  const changeSide = () => {
+  const changeSide = (e) => {
+    e.preventDefault();
     rotate === "true"
       ? setBasket({ from: basket.from, to: basket.to })
       : setBasket({ from: basket.to, to: basket.from });
     setRotate(!rotate);
   };
+  const handlerSubmit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setStorageCart(basket);
+    console.log(getStorageCart());
+  };
 
   return (
     <>
-      <div className="destination">
+      <form className="destination" onSubmit={handlerSubmit}>
         <div className="destination-inputs">
           <div className=" destination-input">
             <input
@@ -32,6 +43,7 @@ export const Destination = () => {
               placeholder="from"
               className="input"
               onChange={handleChange}
+              required
             />
             <input
               id="to"
@@ -40,11 +52,13 @@ export const Destination = () => {
               value={basket.to}
               className="input"
               onChange={handleChange}
+              required
             />
           </div>
 
-          <button className="button-change-icon " onClick={changeSide}>
+          <button className="button-change-icon ">
             <img
+              onClick={changeSide}
               className={
                 rotate ? "change-icon button-left" : "change-icon button-rigth "
               }
@@ -54,7 +68,7 @@ export const Destination = () => {
           </button>
         </div>
         <button className="button button-destination">siguiente</button>
-      </div>
+      </form>
     </>
   );
 };
