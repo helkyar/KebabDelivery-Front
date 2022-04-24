@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Views _____________________________________
-// import { Session } from "./views/Session";
+import { Session } from "./views/Session";
 import { Main } from "./views/Main";
-// import { Template } from "./views/Template";
+import { Template } from "./views/Template";
 import { Error } from "./views/Error";
-// import { Redirect } from "./components/Redirect";
+import { Redirect } from "./components/Redirect";
 // Context ___________________________________
 import { UserContextProvider } from "./contexts/user";
 

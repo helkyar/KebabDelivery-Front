@@ -8,12 +8,14 @@ $shadowButtons: 0px 0px 16px rgba(0, 0, 0, 0.25);
 // React Legacy Styles
 * {
   font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
 }
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $background;
+  min-height: 100vh;
 }
 
 code {
@@ -24,22 +26,27 @@ code {
 #hidden {
   display: none;
 }
-.button {
+button {
   text-decoration: none;
+  border: none;
+}
+.button {
   font-weight: 400;
   font-size: 16px;
   border-radius: 8px;
   background-color: $primaryColor;
   color: $secondaryColor;
   text-transform: uppercase;
-  border: none;
-  padding: 10px 15px;
-  min-width: 207px;
+
+  width: 207px;
   max-width: 100%;
   margin: 10px;
   box-shadow: $shadowButtons;
+  &:active {
+    box-shadow: unset;
+  }
   @media (min-width: 450px) {
-    min-width: 240px;
+    width: 240px;
     min-height: 45px;
     font-size: 18px;
   }
