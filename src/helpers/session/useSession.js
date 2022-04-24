@@ -20,10 +20,13 @@ export const useSession = () => {
           logfail = true;
           window.sessionStorage.removeItem("jwt");
           window.sessionStorage.removeItem("user");
+          setJWT(null);
+          setUser(null);
+          navigate("/login");
           console.error(err);
         });
     },
-    [setJWT],
+    [setJWT]
   );
 
   const logout = useCallback(() => {
