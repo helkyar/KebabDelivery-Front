@@ -1,5 +1,5 @@
 // variables
-$background: #e5e5e5;
+$background: #f0f0f0;
 $primaryColor: #ff8c60;
 $secondaryColor: #ffffff;
 $placeholder: #9b9b9b;
@@ -40,7 +40,7 @@ button:focus-visible {
   background-color: $primaryColor;
   color: $secondaryColor;
   text-transform: uppercase;
-
+  height: 45px;
   width: 207px;
   max-width: 100%;
   margin: 10px;
@@ -51,7 +51,7 @@ button:focus-visible {
 
   @media (min-width: 450px) {
     width: 240px;
-    min-height: 45px;
+    height: 45px;
     font-size: 18px;
   }
 }
