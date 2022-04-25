@@ -4,11 +4,17 @@ import {
   getStorageCart,
   postStorageCart,
 } from "helpers/localStorage/storageCart";
+import { useNavigate } from "react-router-dom";
 
 export const Destination = () => {
   const [basket, setBasket] = useState(getStorageCart());
   const [rotate, setRotate] = useState(true);
   const tempCart = { ...basket };
+  const navigate = useNavigate();
+  useEffect(() => {
+    setBasket(getStorageCart());
+  }, []);
+
   const handleChange = (e) => {
     if (e.target.id === "from") {
       tempCart.from = e.target.value;
@@ -21,15 +27,17 @@ export const Destination = () => {
   };
 
   const rotateDestination = (e) => {
-    e.preventDefault();
     rotate === "true"
       ? setBasket({ from: basket.from, to: basket.to })
       : setBasket({ from: basket.to, to: basket.from });
+
     setRotate(!rotate);
+    postStorageCart(basket);
   };
   const handlerSubmit = (e) => {
     e.preventDefault();
     postStorageCart(basket);
+    navigate("/stepshop");
   };
 
   return (

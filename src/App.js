@@ -8,6 +8,7 @@ import { Error } from "./views/Error";
 import { Redirect } from "./components/Redirect";
 // Context ___________________________________
 import { UserContextProvider } from "./contexts/user";
+import { StepShop } from "views/StepShop";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<Session />} />
           <Route path="/template" element={<Template />} />
+          <Route path="/stepshop" element={<StepShop />} />
           <Route path="/*" element={<Error />} />
         </Routes>
 
