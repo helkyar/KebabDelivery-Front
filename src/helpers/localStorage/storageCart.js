@@ -1,12 +1,11 @@
 const getStorageCart = () => {
+  const modelStorage = { from: "", to: "" };
   const getStorage = JSON.parse(localStorage.getItem("cart"));
 
-  return {
-    from: getStorage?.from || "",
-    to: getStorage?.to || "",
-  };
+  return getStorage ? getStorage : modelStorage;
 };
-const setStorageCart = (packet) => {
+const postStorageCart = (packet) => {
   localStorage.setItem("cart", JSON.stringify(packet));
 };
-export { getStorageCart, setStorageCart };
+
+export { getStorageCart, postStorageCart };

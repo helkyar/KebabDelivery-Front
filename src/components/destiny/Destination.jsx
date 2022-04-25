@@ -2,22 +2,25 @@ import { useEffect, useState } from "react";
 import changeIcon from "assets/img/changeIcon.svg";
 import {
   getStorageCart,
-  setStorageCart,
+  postStorageCart,
 } from "helpers/localStorage/storageCart";
 
 export const Destination = () => {
   const [basket, setBasket] = useState(getStorageCart());
   const [rotate, setRotate] = useState(true);
-
+  const tempCart = { ...basket };
   const handleChange = (e) => {
     if (e.target.id === "from") {
-      setBasket({ from: e.target.value, to: basket.to });
+      tempCart.from = e.target.value;
+      setBasket(tempCart);
     } else if (e.target.id === "to") {
-      setBasket({ from: basket.from, to: e.target.value });
+      tempCart.to = e.target.value;
+
+      setBasket(tempCart);
     }
   };
 
-  const changeSide = (e) => {
+  const rotateDestination = (e) => {
     e.preventDefault();
     rotate === "true"
       ? setBasket({ from: basket.from, to: basket.to })
@@ -26,9 +29,7 @@ export const Destination = () => {
   };
   const handlerSubmit = (e) => {
     e.preventDefault();
-    e.stopPropagation();
-    setStorageCart(basket);
-    console.log(getStorageCart());
+    postStorageCart(basket);
   };
 
   return (
@@ -58,7 +59,7 @@ export const Destination = () => {
 
           <button className="button-change-icon ">
             <img
-              onClick={changeSide}
+              onClick={rotateDestination}
               className={
                 rotate ? "change-icon button-left" : "change-icon button-rigth "
               }

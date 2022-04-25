@@ -5,7 +5,6 @@ import { useNavigate } from "react-router";
 import { Template } from "views/Template";
 import { useSession } from "helpers/session/useSession";
 import { Destination } from "components/destiny/Destination";
-import { getStorageCart } from "helpers/localStorage/storageCart";
 
 export const Main = () => {
   const [onOpen, setOnOpen] = useState(false);
