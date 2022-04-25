@@ -1,0 +1,57 @@
+.destination {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 179px;
+}
+
+.destination-inputs {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60%;
+  input {
+    border: 2px solid $primaryColor;
+    height: 37px;
+    width: 100%;
+    margin: 0;
+    padding: 0 12px;
+    border-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  input,
+  select {
+    outline: none;
+  }
+  input:focus-visible {
+    // outline: none;
+
+    outline: 2px solid #616161fc;
+  }
+}
+.destination-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+}
+.button-destination {
+  margin: 0;
+}
+.button-change-icon {
+  background-color: rgba(255, 255, 255, 0);
+  outline: none;
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.button-rigth {
+  transition-duration: 0.5s;
+  transform: rotate(180deg);
+}
+.button-left {
+  transition: 0.5s;
+  transform: rotate(0deg);
+}
