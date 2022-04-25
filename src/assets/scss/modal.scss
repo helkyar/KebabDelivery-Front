@@ -29,6 +29,7 @@
     padding: 1.5rem;
     background-color: $background;
     overflow-wrap: break-word;
+    width: 100%;
     @media (min-width: 450px) {
       max-width: 450px;
     }

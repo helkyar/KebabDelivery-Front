@@ -5,9 +5,10 @@ import { Session } from "./views/Session";
 import { Main } from "./views/Main";
 import { Template } from "./views/Template";
 import { Error } from "./views/Error";
-// import { Redirect } from "./components/Redirect";
+import { Redirect } from "./components/Redirect";
 // Context ___________________________________
 import { UserContextProvider } from "./contexts/user";
+import { StepShop } from "views/StepShop";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/login" element={<Session />} />
           <Route path="/template" element={<Template />} />
+          <Route path="/stepshop" element={<StepShop />} />
           <Route path="/*" element={<Error />} />
         </Routes>
 

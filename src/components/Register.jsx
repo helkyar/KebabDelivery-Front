@@ -19,7 +19,7 @@ export const Register = () => {
       console.log("Introduce valid credentials");
       return;
     }
-    const credentials = { username, password };
+    const credentials = { username, password, nombre: "aa" };
     //------------------------------------------------------
     await register(credentials, "register");
 
