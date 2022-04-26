@@ -32,6 +32,7 @@ export const Login = () => {
 
   return (
     <>
+    <p className="modal-login-title">Inicia Sesion</p>
       <form className="login-form session-form" onSubmit={userLogin}>
         <input
           className="login-username"
@@ -47,7 +48,7 @@ export const Login = () => {
           value={pswd}
           onChange={(e) => setPswd(e.target.value)}
         />
-        <button onClick={(e) => userLogin(e)}>Login</button>
+        <button className="login-button button" onClick={(e) => userLogin(e)}>Iniciar Sesion</button>
       </form>
     </>
   );
