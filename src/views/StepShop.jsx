@@ -49,14 +49,11 @@ export const StepShop = () => {
   };
   return (
     <>
-    <Stepper
-        lineHeight="3"
+    <Stepper        
         defaultTitleColor="#787878"
-        defaultColor="#FFFFFF"
-        defaultBorderColor="#FF8454"
+        defaultColor="#FFFFFF"       
         completeColor="#FF8454"
-        completeBarColor="#FF8454"
-        lineWeight="50"
+        completeBarColor="#FF8454"        
         steps={[
           { title: "destino" },
           { title: "tamaño" },
