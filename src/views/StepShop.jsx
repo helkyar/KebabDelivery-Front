@@ -1,23 +1,40 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import Stepper from "react-simple-stepper-component";
+
+const useStep = () => {
+  const [step, setStep] = useState(1);
+  const next = () => setStep(step + 1);
+  const back = () => setStep(step - 1);
+  return { step, next, back };
+};
+
+
 export const StepShop = () => {
-  const [step, setStep] = useState(0);
+  const { step, next, back } = useStep();
+  const navigate = useNavigate();
 
   const managerStepComponent = () => {
     if (step === 1) {
       return (
         <>
           <h1>model de tamaño</h1>
-          <button onClick={() => setStep(step + 1)}>siguiente</button>
+          <button onClick={next}>siguiente</button>
+          <button
+            onClick={() => {
+              navigate("/");
+            }}
+          >
+            atras
+          </button>
         </>
       );
     } else if (step === 2) {
       return (
         <>
           <h1>model de fecha</h1>
-          <button onClick={() => setStep(step + 1)}>siguiente</button>
-          <button onClick={() => setStep(step - 1)}>atras</button>
+          <button onClick={next}>siguiente</button>
+          <button onClick={back}>atras</button>
         </>
       );
     } else if (step === 3) {
@@ -25,15 +42,14 @@ export const StepShop = () => {
         <>
           <h1>model de resumen</h1>
 
-          <button onClick={() => setStep(step - 1)}>atras</button>
+          <button onClick={back}>atras</button>
         </>
       );
     }
   };
   return (
     <>
-      {managerStepComponent()} 
-      <Stepper
+    <Stepper
         lineHeight="3"
         defaultTitleColor="#787878"
         defaultColor="#FFFFFF"
@@ -49,8 +65,9 @@ export const StepShop = () => {
         ]}
         activeStep={step}
       />
-      <button onClick={() => setStep(step + 1)}>siguiente</button>{" "}
-      <button onClick={() => setStep(step - 1)}>anterior</button>
+      {managerStepComponent()} 
+      
+     
     </>
   );
 };
