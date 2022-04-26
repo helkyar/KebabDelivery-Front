@@ -60,10 +60,3 @@ button:focus-visible {
   color: $primaryColor;
   border: 2px solid $primaryColor;
 }
-
-.button:hover{
-  transform: scale(1.1);
-}
-.button:active{
-  transform: scale(0.9);
-}
