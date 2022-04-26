@@ -11,9 +11,6 @@ export const Destination = () => {
   const [rotate, setRotate] = useState(true);
   const tempCart = { ...basket };
   const navigate = useNavigate();
-  useEffect(() => {
-    setBasket(getStorageCart());
-  }, []);
 
   const handleChange = (e) => {
     if (e.target.id === "from") {
@@ -27,13 +24,15 @@ export const Destination = () => {
   };
 
   const rotateDestination = (e) => {
+    setRotate(!rotate);
     rotate === "true"
       ? setBasket({ from: basket.from, to: basket.to })
       : setBasket({ from: basket.to, to: basket.from });
-
-    setRotate(!rotate);
-    postStorageCart(basket);
   };
+  useEffect(() => {
+    postStorageCart(basket);
+  }, [basket]);
+
   const handlerSubmit = (e) => {
     e.preventDefault();
     postStorageCart(basket);
@@ -65,7 +64,7 @@ export const Destination = () => {
             />
           </div>
 
-          <button className="button-change-icon ">
+          <div className="button-change-icon ">
             <img
               onClick={rotateDestination}
               className={
@@ -74,7 +73,7 @@ export const Destination = () => {
               srcSet={changeIcon}
               alt=""
             />
-          </button>
+          </div>
         </div>
         <button className="button button-destination">siguiente</button>
       </form>

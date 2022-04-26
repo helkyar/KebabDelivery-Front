@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { Template } from "views/Template";
 import { useSession } from "helpers/session/useSession";
 import { Destination } from "components/destiny/Destination";
+import { SearchPackage } from "components/SearchPackage/SearchPackage";
 
 export const Main = () => {
   const [onOpen, setOnOpen] = useState(false);
@@ -18,10 +19,7 @@ export const Main = () => {
           <h1 className="logo">kometa</h1>
         </div>
       </header>
-      <div className="search">
-        <input type="text" placeholder="N seguimiento" />
-        <button className="button button-search">buscar</button>
-      </div>
+      <SearchPackage />
 
       {/* <button
         className=" button"
