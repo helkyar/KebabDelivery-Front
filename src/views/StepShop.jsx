@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { DeliveryContentSize } from "./DeliveryContentSize";
+import { DeliveryContentDate } from "./DeliveryContentDate";
+import { DeliveryContentResume } from "./DeliveryContentResume";
 import Stepper from "react-simple-stepper-component";
 
 const useStep = () => {
@@ -12,38 +15,20 @@ const useStep = () => {
 
 export const StepShop = () => {
   const { step, next, back } = useStep();
-  const navigate = useNavigate();
 
   const managerStepComponent = () => {
     if (step === 1) {
       return (
-        <>
-          <h1>model de tamaño</h1>
-          <button onClick={next}>siguiente</button>
-          <button
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            atras
-          </button>
-        </>
+          <DeliveryContentSize props={{step, next, back}}/>
       );
     } else if (step === 2) {
       return (
-        <>
-          <h1>model de fecha</h1>
-          <button onClick={next}>siguiente</button>
-          <button onClick={back}>atras</button>
-        </>
+          <DeliveryContentDate props={{step, next, back}} />
       );
     } else if (step === 3) {
       return (
-        <>
-          <h1>model de resumen</h1>
-
-          <button onClick={back}>atras</button>
-        </>
+          <DeliveryContentResume props={{step, next, back}} />
+  
       );
     }
   };
