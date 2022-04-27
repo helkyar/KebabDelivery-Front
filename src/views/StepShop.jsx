@@ -34,6 +34,12 @@ export const StepShop = () => {
   };
   return (
     <>
+    <div className="app">
+      <header className="header">
+        <div>
+          <h1 className="logo">kometa</h1>
+        </div>
+      </header>
     <Stepper        
         defaultTitleColor="#787878"
         defaultColor="#FFFFFF"       
@@ -49,7 +55,7 @@ export const StepShop = () => {
       />
       {managerStepComponent()} 
       
-     
+     </div>
     </>
   );
 };
