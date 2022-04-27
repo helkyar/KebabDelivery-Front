@@ -12,33 +12,25 @@ const useStep = () => {
   return { step, next, back };
 };
 
-
 export const StepShop = () => {
   const { step, next, back } = useStep();
 
   const managerStepComponent = () => {
     if (step === 1) {
-      return (
-          <DeliveryContentSize props={{step, next, back}}/>
-      );
+      return <DeliveryContentSize props={{ step, next, back }} />;
     } else if (step === 2) {
-      return (
-          <DeliveryContentDate props={{step, next, back}} />
-      );
+      return <DeliveryContentDate props={{ step, next, back }} />;
     } else if (step === 3) {
-      return (
-          <DeliveryContentResume props={{step, next, back}} />
-  
-      );
+      return <DeliveryContentResume props={{ step, next, back }} />;
     }
   };
   return (
     <>
-    <Stepper        
+      <Stepper
         defaultTitleColor="#787878"
-        defaultColor="#FFFFFF"       
+        defaultColor="#FFFFFF"
         completeColor="#FF8454"
-        completeBarColor="#FF8454"        
+        completeBarColor="#FF8454"
         steps={[
           { title: "destino" },
           { title: "tamaño" },
@@ -47,9 +39,7 @@ export const StepShop = () => {
         ]}
         activeStep={step}
       />
-      {managerStepComponent()} 
-      
-     
+      {managerStepComponent()}
     </>
   );
 };
