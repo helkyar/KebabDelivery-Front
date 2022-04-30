@@ -7,9 +7,11 @@ import { useSession } from "helpers/session/useSession";
 import {Session} from "./Session"
 import { Destination } from "components/destiny/Destination";
 import { SearchPackage } from "components/SearchPackage/SearchPackage";
+import { Login } from "components/Login";
 
 export const Main = () => {
-  const [onOpen, setOnOpen] = useState(false);
+  const [onOpenLogin, setOnOpenLogin] = useState(false);
+  const [onOpenRegister, setOnOpenRegister] = useState(false);
   const navigate = useNavigate();
   const { logout } = useSession();
 
@@ -22,19 +24,18 @@ export const Main = () => {
       </header>
       <SearchPackage />
 
-      {/* <button
+      <button
         className=" button"
         onClick={() => {
-          setOnOpen(true);
+          setOnOpenLogin(true);
         }}
       >
         iniciar sesion
-      </button> */}
+      </button>
       {/* put like props two state (onOpen and setOnOpen) that will open or close de modal  */}
-      <Modal onOpen={onOpen} setOnOpen={setOnOpen} >
-        <Session />
+      <Modal onOpen={onOpenLogin} setOnOpen={setOnOpenLogin} >
+        <Login  setOnOpen={setOnOpenLogin}/>
       </Modal>
-
       <ButtonCard size="big" titleButton="hacer delivery">
         <Destination />
       </ButtonCard>
