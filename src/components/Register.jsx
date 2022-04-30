@@ -9,7 +9,8 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [lastName, setLastname] = useState("");
-  const [telf, setTelf] = useState("");
+  const [phone, setPhone] = useState("");
+  const [rol, setRol] = useState("client");
   const { loger, isLogged } = useSession();
 
   const userRegister = async (e) => {
@@ -19,7 +20,8 @@ export const Register = () => {
       console.log("Introduce valid credentials");
       return;
     }
-    const credentials = { username, password, lastName, email, telf };
+   
+    const credentials = { username, password, lastName, email, phone, rol };
     //------------------------------------------------------
     await register(credentials, "register");
 
@@ -64,8 +66,8 @@ export const Register = () => {
           placeholder="Telefono"
           type="tel" required
           pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
-          value={telf}
-          onChange={(e) => setTelf(e.target.value)}
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
         />
 
         <input
