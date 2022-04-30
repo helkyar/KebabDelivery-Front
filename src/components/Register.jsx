@@ -9,7 +9,8 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [lastName, setLastname] = useState("");
-  const [telf, setTelf] = useState("");
+  const [phone, setPhone] = useState("");
+  const [rol, setRol] = useState("client");
   const { loger, isLogged } = useSession();
 
   const userRegister = async (e) => {
@@ -19,7 +20,8 @@ export const Register = () => {
       console.log("Introduce valid credentials");
       return;
     }
-    const credentials = { username, password, nombre: "aa" };
+   
+    const credentials = { username, password, lastName, email, phone, rol };
     //------------------------------------------------------
     await register(credentials, "register");
 
@@ -40,7 +42,7 @@ export const Register = () => {
         <input
           className="register-data"
           placeholder="Correo electrónico"
-          type="email"
+          type="email" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -62,22 +64,21 @@ export const Register = () => {
         <input
           className="register-data"
           placeholder="Telefono"
-          type="number"
-          value={telf}
-          onChange={(e) => setTelf(e.target.value)}
+          type="tel" required
+          pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
         />
 
         <input
           className="register-data"
           placeholder="Contraseña"
-          type="password"
+          type="password" required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button
-          className="button register-button"
-          onClick={(e) => userRegister(e)}
-        >
+          className="button register-button">
           Registrarme
         </button>
       </form>

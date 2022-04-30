@@ -37,18 +37,18 @@ export const Login = () => {
         <input
           className="login-username"
           placeholder="username"
-          type="text"
+          type="text" required
           value={user}
           onChange={(e) => setUser(e.target.value)}
         />
         <input
           className="login-password"
           placeholder="password"
-          type="password"
+          type="password" required
           value={pswd}
           onChange={(e) => setPswd(e.target.value)}
         />
-        <button className="login-button button" onClick={(e) => userLogin(e)}>Iniciar Sesion</button>
+        <button className="login-button button">Iniciar Sesion</button>
       </form>
     </>
   );
