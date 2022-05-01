@@ -1,0 +1,17 @@
+// variables
+$background: #f0f0f0;
+$primaryColor: #ff8c60;
+$secondaryColor: #ffffff;
+$placeholder: #9b9b9b;
+$colorText: #2e2e2e;
+$shadowButtons: 2px 4px 8px rgba(0, 0, 0, 0.25);
+$movil: 450px;
+:export {
+  background: $background;
+  primaryColor: $primaryColor;
+  secondaryColor: $secondaryColor;
+  placeholder: $placeholder;
+  colorText: $colorText;
+  shadowButtons: $shadowButtons;
+  movil: $movil;
+}

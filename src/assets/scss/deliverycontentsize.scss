@@ -1,0 +1,23 @@
+.delivery-box-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.delivery-box,
+.delivery-box-nohover {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 8px;
+  box-shadow: $shadowButtons;
+  justify-content: center;
+  align-items: center;
+}
+.delivery-box:hover {
+  background-color: $primaryColor;
+  .testicon,
+  p {
+    color: $secondaryColor;
+  }
+}

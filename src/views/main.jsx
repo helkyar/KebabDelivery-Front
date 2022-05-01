@@ -4,7 +4,7 @@ import Modal from "../components/modal/Modal";
 import { useNavigate } from "react-router";
 import { Template } from "views/Template";
 import { useSession } from "helpers/session/useSession";
-import {Session} from "./Session"
+import { Session } from "./Session";
 import { Destination } from "components/destiny/Destination";
 import { SearchPackage } from "components/SearchPackage/SearchPackage";
 
@@ -22,16 +22,16 @@ export const Main = () => {
       </header>
       <SearchPackage />
 
-      {/* <button
+      <button
         className=" button"
         onClick={() => {
           setOnOpen(true);
         }}
       >
         iniciar sesion
-      </button> */}
+      </button>
       {/* put like props two state (onOpen and setOnOpen) that will open or close de modal  */}
-      <Modal onOpen={onOpen} setOnOpen={setOnOpen} >
+      <Modal onOpen={onOpen} setOnOpen={setOnOpen}>
         <Session />
       </Modal>
 
