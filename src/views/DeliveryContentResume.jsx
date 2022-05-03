@@ -4,7 +4,7 @@ export const DeliveryContentResume = ({ props }) => {
     <>
       <h1>model de resumen</h1>
 
-      <button onClick={props.back}>atras</button>
+      <button onClick={props.back} className="button button-destination">Atrás</button>
     </>
   );
 };

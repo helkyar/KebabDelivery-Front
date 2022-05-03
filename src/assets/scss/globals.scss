@@ -60,3 +60,42 @@ button:focus-visible {
   color: $primaryColor;
   border: 2px solid $primaryColor;
 }
+.input-primary{
+  height: 37px;
+  background: #ffffff;
+  border: 1px solid #ff8c60;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.input-secondary{
+  height: 33px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #ff8c60;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin: 2px 2px;
+}
+.input-third{
+  height: 100px;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #ff8c60;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.row-between{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.column-center{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
