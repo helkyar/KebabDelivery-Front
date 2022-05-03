@@ -1,5 +1,5 @@
 .container-button-card {
-  // z-index: 100;
+  z-index: 100;
   width: 300px;
   margin: 2rem auto;
   border-radius: 8px;
@@ -38,7 +38,7 @@
   right: 0;
   margin-top: -8px;
   background-color: $secondaryColor;
-  padding: 1rem 2rem;
+  padding: 1rem 0.5rem;
   height: -webkit-max-content;
   height: -moz-max-content;
   height: max-content;
