@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useSession } from "helpers/session/useSession";
 
-export const Login = () => {
+export const Login = ({setOnOpen}) => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [pswd, setPswd] = useState("");
@@ -23,6 +23,7 @@ export const Login = () => {
     await loger(credentials);
     setUser("");
     setPswd("");
+    setOnOpen(false);
   };
 
   useEffect(() => {
