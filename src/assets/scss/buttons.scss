@@ -1,5 +1,5 @@
 .container-button-card {
-  z-index: 100;
+  // z-index: 100;
   width: 300px;
   margin: 2rem auto;
   border-radius: 8px;
@@ -44,6 +44,7 @@
   height: max-content;
   min-height: 100px;
   z-index: -100;
+
   -webkit-animation-duration: 0.4s;
   animation-duration: 0.4s;
   -webkit-animation-name: slidein;

@@ -12,50 +12,41 @@ const useStep = () => {
   return { step, next, back };
 };
 
-
 export const StepShop = () => {
   const { step, next, back } = useStep();
 
   const managerStepComponent = () => {
     if (step === 1) {
-      return (
-          <DeliveryContentSize props={{step, next, back}}/>
-      );
+      return <DeliveryContentSize props={{ step, next, back }} />;
     } else if (step === 2) {
-      return (
-          <DeliveryContentDate props={{step, next, back}} />
-      );
+      return <DeliveryContentDate props={{ step, next, back }} />;
     } else if (step === 3) {
-      return (
-          <DeliveryContentResume props={{step, next, back}} />
-  
-      );
+      return <DeliveryContentResume props={{ step, next, back }} />;
     }
   };
   return (
     <>
-    <div className="app">
-      <header className="header">
-        <div>
-          <h1 className="logo">kometa</h1>
-        </div>
-      </header>
-    <Stepper        
-        defaultTitleColor="#787878"
-        defaultColor="#FFFFFF"       
-        completeColor="#FF8454"
-        completeBarColor="#FF8454"        
-        steps={[
-          { title: "destino" },
-          { title: "tamaño" },
-          { title: "fecha" },
-          { title: "resumen" },
-        ]}
-        activeStep={step}
-      />
-      {managerStepComponent()} 
-      
-     </div>
+      <div className="app">
+        <header className="header">
+          <div>
+            <h1 className="logo">kometa</h1>
+          </div>
+        </header>
+        <Stepper
+          defaultTitleColor="#787878"
+          defaultColor="#FFFFFF"
+          completeColor="#FF8454"
+          completeBarColor="#FF8454"
+          steps={[
+            { title: "destino" },
+            { title: "tamaño" },
+            { title: "fecha" },
+            { title: "resumen" },
+          ]}
+          activeStep={step}
+        />
+        {managerStepComponent()}
+      </div>
     </>
   );
 };

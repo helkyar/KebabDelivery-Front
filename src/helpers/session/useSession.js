@@ -1,7 +1,7 @@
 import { useCallback, useContext } from "react";
 import Context from "contexts/user";
 import startSession from "helpers/session/session";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useRoutes } from "react-router-dom";
 
 export const useSession = () => {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ export const useSession = () => {
           window.sessionStorage.setItem("user", `${id}, ${username}`);
           setJWT(token);
           setUser(`${id}, ${username}`);
+          window.location.replace("");
         })
         .catch((err) => {
           logfail = true;
@@ -22,11 +23,11 @@ export const useSession = () => {
           window.sessionStorage.removeItem("user");
           setJWT(null);
           setUser(null);
-          navigate("/login");
+          window.location.replace("");
           console.error(err);
         });
     },
-    [setJWT]
+    [setJWT],
   );
 
   const logout = useCallback(() => {
@@ -34,7 +35,7 @@ export const useSession = () => {
     window.sessionStorage.removeItem("user");
     setJWT(null);
     setUser(null);
-    navigate("/login");
+    window.location.replace("");
   }, [setJWT]);
 
   return { user, logout, loger, isLogged: Boolean(jwt), logfail };
