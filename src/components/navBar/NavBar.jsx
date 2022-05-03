@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { NavDesktop } from "./NavDesktop";
-import { NavBarMovil } from "./NavMovil";
+import { NavDesktop } from "./NavBarDesktop";
+import { NavBarMovil } from "./NavBarMovil";
 import movil from "../../assets/scss/variables.scss";
 
 const NavBar = () => {

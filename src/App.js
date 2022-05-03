@@ -17,7 +17,7 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route exact path="/" element={<Main />} />
+          <Route path="/" element={<Main />} />
           {/* <Route path="/login" element={<Session />} /> */}
           {/* <Route path="/template" element={<Template />} /> */}
           <Route path="/stepshop" element={<StepShop />} />

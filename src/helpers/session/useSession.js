@@ -15,7 +15,7 @@ export const useSession = () => {
           window.sessionStorage.setItem("user", `${id}, ${username}`);
           setJWT(token);
           setUser(`${id}, ${username}`);
-          window.location.replace("");
+          navigate("/");
         })
         .catch((err) => {
           logfail = true;
@@ -23,7 +23,7 @@ export const useSession = () => {
           window.sessionStorage.removeItem("user");
           setJWT(null);
           setUser(null);
-          window.location.replace("");
+          navigate("/");
           console.error(err);
         });
     },
@@ -35,7 +35,7 @@ export const useSession = () => {
     window.sessionStorage.removeItem("user");
     setJWT(null);
     setUser(null);
-    window.location.replace("");
+    navigate("/");
   }, [setJWT]);
 
   return { user, logout, loger, isLogged: Boolean(jwt), logfail };
