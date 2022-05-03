@@ -9,20 +9,21 @@ import { Redirect } from "./components/Redirect";
 // Context ___________________________________
 import { UserContextProvider } from "./contexts/user";
 import { StepShop } from "views/StepShop";
+import { NavBar } from "components/navBar/NavBar";
 
 function App() {
   return (
     <UserContextProvider>
       <BrowserRouter>
+        <NavBar />
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/login" element={<Session />} />
-          <Route path="/template" element={<Template />} />
+          <Route exact path="/" element={<Main />} />
+          {/* <Route path="/login" element={<Session />} /> */}
+          {/* <Route path="/template" element={<Template />} /> */}
           <Route path="/stepshop" element={<StepShop />} />
           <Route path="/*" element={<Error />} />
         </Routes>
-
-        {/* <Redirect /> */}
+        <Redirect />
       </BrowserRouter>
     </UserContextProvider>
   );

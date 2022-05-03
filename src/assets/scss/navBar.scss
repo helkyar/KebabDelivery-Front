@@ -1,0 +1,121 @@
+.container-navbar {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 72px;
+  width: 100%;
+
+  @media (min-width: $movil) {
+    position: relative;
+    bottom: unset;
+    top: 0;
+    height: 122px;
+  }
+}
+
+.button-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 200;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-image: url("../img/iconMenu.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  @media (min-width: $movil) {
+    display: none;
+  }
+}
+
+.container-navbar::after {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: -100;
+  background-image: url("../img/navbar.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100vw 100%;
+
+  @media (min-width: $movil) {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+  }
+}
+
+.background-navbar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  background-color: rgba(43, 43, 43, 0.176);
+}
+.navbar-movil {
+  position: absolute;
+  right: 0;
+  width: 60vw;
+  height: 100vh;
+  background-color: $secondaryColor;
+
+  nav {
+    overflow-wrap: anywhere;
+  }
+}
+.nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+  @media (min-width: $movil) {
+    flex-direction: row;
+    justify-content: flex-end;
+    gap: 20px;
+  }
+}
+
+.container-log {
+  text-align: center;
+  @media (min-width: $movil) {
+    background-color: $secondaryColor;
+    width: -webkit-min-content;
+    width: -moz-min-content;
+    width: min-content;
+    border-radius: 8px;
+    padding: 10px;
+    position: absolute;
+    top: 130%;
+    right: -15px;
+    z-index: 100;
+    &::after {
+      content: "";
+      position: absolute;
+      top: -20px;
+      right: 14.5%;
+      border-bottom: 10px solid rgb(255, 255, 255);
+      border-top: 10px solid rgba(0, 0, 0, 0);
+      border-left: 10px solid rgba(0, 0, 0, 0);
+      border-right: 10px solid rgba(0, 0, 0, 0);
+    }
+  }
+}
+.log::after {
+  background-color: rgba(0, 0, 0, 0);
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+}

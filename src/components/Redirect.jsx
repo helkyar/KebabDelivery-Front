@@ -7,7 +7,7 @@ export const Redirect = () => {
   const { isLogged } = useSession();
 
   useEffect(() => {
-    if (!isLogged) navigate("/login");
+    if (!isLogged) navigate("/");
   }, [isLogged, navigate]);
 
   return <></>;
