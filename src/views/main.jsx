@@ -9,7 +9,6 @@ import { Destination } from "components/destiny/Destination";
 import { SearchPackage } from "components/SearchPackage/SearchPackage";
 
 export const Main = () => {
-  const [onOpen, setOnOpen] = useState(false);
   const navigate = useNavigate();
   const { logout } = useSession();
 
@@ -22,18 +21,7 @@ export const Main = () => {
       </header>
       <SearchPackage />
 
-      <button
-        className=" button"
-        onClick={() => {
-          setOnOpen(true);
-        }}
-      >
-        iniciar sesion
-      </button>
       {/* put like props two state (onOpen and setOnOpen) that will open or close de modal  */}
-      <Modal onOpen={onOpen} setOnOpen={setOnOpen}>
-        <Session />
-      </Modal>
 
       <ButtonCard size="big" titleButton="hacer delivery">
         <Destination />

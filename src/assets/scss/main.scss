@@ -18,8 +18,8 @@
   background-position: center;
   background-size: 100vw 100%;
 
-  @media (min-width: 450px) {
-    height: 138px;
+  @media (min-width: $movil) {
+    display: none;
   }
   div {
     padding: 1rem;
