@@ -23,7 +23,7 @@ function App() {
           <Route path="/stepshop" element={<StepShop />} />
           <Route path="/*" element={<Error />} />
         </Routes>
-        <Redirect />
+        {/* <Redirect /> */}
       </BrowserRouter>
     </UserContextProvider>
   );

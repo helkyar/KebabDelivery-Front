@@ -1,3 +1,5 @@
+import { Destination } from "components/destiny/Destination";
+
 export const DeliveryContentResume = ({ props }) => {
   console.log(props);
   return (

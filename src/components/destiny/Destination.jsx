@@ -35,7 +35,7 @@ export const Destination = () => {
 
   const handlerSubmit = (e) => {
     e.preventDefault();
-    postStorageCart(basket);
+
     navigate("/stepshop");
   };
 

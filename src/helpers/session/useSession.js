@@ -8,13 +8,13 @@ export const useSession = () => {
   const { jwt, setJWT, user, setUser } = useContext(Context);
   let logfail = false;
   const loger = useCallback(
-    ({ username, password }) => {
-      startSession({ username, password }, "login")
-        .then(({ token, username, id }) => {
+    ({ email, password }) => {
+      startSession({ email, password }, "login")
+        .then(({ token, email, id }) => {
           window.sessionStorage.setItem("jwt", token);
-          window.sessionStorage.setItem("user", `${id}, ${username}`);
+          window.sessionStorage.setItem("user", `${id}, ${email}`);
           setJWT(token);
-          setUser(`${id}, ${username}`);
+          setUser(`${id}, ${email}`);
           navigate("/");
         })
         .catch((err) => {

@@ -24,20 +24,6 @@ export const Main = () => {
       </header>
       <SearchPackage />
 
-      <button
-        className=" button"
-        onClick={() => {
-          setOnOpenLogin(true);
-        }}
-      >
-        iniciar sesion
-      </button>
-      {/* put like props two state (onOpen and setOnOpen) that will open or close de modal  */}
-      <Modal onOpen={onOpenLogin} setOnOpen={setOnOpenLogin} >
-        <Login  setOnOpen={setOnOpenLogin}/>
-      </Modal>
-      {/* put like props two state (onOpen and setOnOpen) that will open or close de modal  */}
-
       <ButtonCard size="big" titleButton="hacer delivery">
         <Destination />
       </ButtonCard>

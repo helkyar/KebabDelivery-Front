@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useSession } from "helpers/session/useSession";
 
-export const Login = ({setOnOpen}) => {
+export const Login = ({ setOnOpen }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [pswd, setPswd] = useState("");
