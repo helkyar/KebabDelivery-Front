@@ -17,7 +17,7 @@ export const Login = ({ setOnOpen }) => {
       console.log("Introduce valid credentials");
       return;
     }
-    const credentials = { username: user.trim(), password: pswd.trim() };
+    const credentials = { email: user.trim(), password: pswd.trim() };
     //--------------------------------------------------------
 
     await loger(credentials);

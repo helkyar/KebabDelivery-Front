@@ -5,10 +5,10 @@ import { useSession } from "helpers/session/useSession";
 
 export const Register = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [lastName, setLastname] = useState("");
+  const [surname, setSurname] = useState("");
   const [phone, setPhone] = useState("");
   const [rol, setRol] = useState("client");
   const { loger, isLogged } = useSession();
@@ -16,19 +16,18 @@ export const Register = () => {
   const userRegister = async (e) => {
     e.preventDefault();
     //(!) Validation logic: should be separated form the view
-    if (!username.trim() || !password.trim()) {
+    if (!name.trim() || !password.trim()) {
       console.log("Introduce valid credentials");
       return;
     }
 
-    const credentials = { username, password, lastName, email, phone, rol };
-    console.log(credentials);
+    const credentials = { phone, name, surname, email, password, rol };
     //------------------------------------------------------
     await register(credentials, "register");
 
-    // Maybe an ineficient way to handle login
+    // May be an ineficient way to handle login
     await loger(credentials);
-    setUsername("");
+    setName("");
     setPassword("");
   };
 
@@ -51,15 +50,15 @@ export const Register = () => {
           className="register-data"
           placeholder="Nombre"
           type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <input
           className="register-data"
           placeholder="Apellido"
           type="text"
-          value={lastName}
-          onChange={(e) => setLastname(e.target.value)}
+          value={surname}
+          onChange={(e) => setSurname(e.target.value)}
         />
 
         <input

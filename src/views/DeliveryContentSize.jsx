@@ -9,7 +9,6 @@ export const DeliveryContentSize = ({ props }) => {
   return (
     <>
       {" "}
-      <h1>model de tamaño</h1>
       <ButtonCard size="small" titleButton="Paquete">
         <div>
           <div className="delivery-box-section">
@@ -26,22 +25,31 @@ export const DeliveryContentSize = ({ props }) => {
               <p>Grande</p>
             </div>
           </div>
-          <div className="delivery-box-nohover">
-            <input type="text" placeholder="largo"></input>
-            <input type="text" placeholder="ancho"></input>
-            <input type="text" placeholder="alto"></input>
-            <input type="text" placeholder="peso"></input>
+        </div>
+      </ButtonCard>
+      
+      <ButtonCard size="small" titleButton="Sobre">
+        <div>
+          <div className="delivery-box-section">
+            <div className="delivery-box">
+              <FaBeer className="testicon" />
+              <p>Pequeño</p>
+            </div>
+            <div className="delivery-box">
+              <FaBeer className="testicon" />
+              <p>Mediano</p>
+            </div>
+            <div className="delivery-box">
+              <FaBeer className="testicon" />
+              <p>Grande</p>
+            </div>
           </div>
         </div>
       </ButtonCard>
-      <button onClick={props.next}>siguiente</button>
-      <button
-        onClick={() => {
+      <button onClick={props.next} className="button button-destination">siguiente</button>
+      <button onClick={() => {
           navigate("/");
-        }}
-      >
-        atras
-      </button>
+        }} className="button button-destination">Atrás</button>
     </>
   );
 };
