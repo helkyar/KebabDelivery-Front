@@ -9,7 +9,10 @@ export function UserContextProvider({ children }) {
   useEffect(() => {
     if (typeof user === "string") {
       let userArray = user.split(",");
-      setUser(userArray);
+      let userObj = userArray.map((value) => {
+        return { [value]: value };
+      });
+      setUser(userObj);
     }
   }, [user]);
 

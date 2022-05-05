@@ -1,34 +1,50 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import register from "helpers/session/session";
+import Context from "contexts/user";
 import { useSession } from "helpers/session/useSession";
+
+import register from "helpers/session/session";
+import postUser from "helpers/users/postUser";
 
 export const Register = () => {
   const navigate = useNavigate();
+  const { loger, isLogged } = useSession();
+  const { user, jwt } = useContext(Context);
+
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [surname, setSurname] = useState("");
   const [phone, setPhone] = useState("");
   const [rol, setRol] = useState("client");
-  const { loger, isLogged } = useSession();
 
   const userRegister = async (e) => {
     e.preventDefault();
-    //(!) Validation logic: should be separated form the view
-    if (!name.trim() || !password.trim()) {
-      console.log("Introduce valid credentials");
-      return;
-    }
-
-    const credentials = { phone, name, surname, email, password, rol };
-    //------------------------------------------------------
+    const credentials = validCredentials();
     await register(credentials, "register");
 
     // May be an ineficient way to handle login
     await loger(credentials);
     setName("");
     setPassword("");
+  };
+
+  const adminRegister = async (e) => {
+    e.preventDefault();
+    const credentials = validCredentials();
+    await postUser(credentials, jwt);
+  };
+
+  const validCredentials = () => {
+    //(!) Validation logic: should be separated form the view
+    if (!name.trim() || !password.trim()) {
+      console.log("Introduce valid credentials");
+      return;
+    }
+
+    //(!) Variable return depending of the rol (deliverers have more params)
+    return { phone, name, surname, email, password, rol };
+    //------------------------------------------------------
   };
 
   useEffect(() => {
@@ -38,7 +54,10 @@ export const Register = () => {
   return (
     <>
       <p className="modal-register-title">Registrate</p>
-      <form className="register-form session-form" onSubmit={userRegister}>
+      <form
+        className="register-form session-form"
+        onSubmit={user?.rol === "admin" ? adminRegister : userRegister}
+      >
         <input
           className="register-data"
           placeholder="Correo electrónico"
