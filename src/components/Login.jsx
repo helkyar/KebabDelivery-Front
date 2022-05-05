@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useSession } from "helpers/session/useSession";
 
-export const Login = ({setOnOpen}) => {
+export const Login = ({ setOnOpen }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [pswd, setPswd] = useState("");
@@ -17,7 +17,7 @@ export const Login = ({setOnOpen}) => {
       console.log("Introduce valid credentials");
       return;
     }
-    const credentials = { username: user.trim(), password: pswd.trim() };
+    const credentials = { email: user.trim(), password: pswd.trim() };
     //--------------------------------------------------------
 
     await loger(credentials);
@@ -33,19 +33,21 @@ export const Login = ({setOnOpen}) => {
 
   return (
     <>
-    <p className="modal-login-title">Inicia Sesion</p>
+      <p className="modal-login-title">Inicia Sesion</p>
       <form className="login-form session-form" onSubmit={userLogin}>
         <input
           className="login-username"
           placeholder="username"
-          type="text" required
+          type="text"
+          required
           value={user}
           onChange={(e) => setUser(e.target.value)}
         />
         <input
           className="login-password"
           placeholder="password"
-          type="password" required
+          type="password"
+          required
           value={pswd}
           onChange={(e) => setPswd(e.target.value)}
         />
