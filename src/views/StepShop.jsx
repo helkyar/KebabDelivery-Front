@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { DeliveryContentSize } from "./DeliveryContentSize";
 import { DeliveryContentDate } from "./DeliveryContentDate";
 import { DeliveryContentResume } from "./DeliveryContentResume";
-import Stepper from "react-simple-stepper-component";
+// import Stepper from "react-simple-stepper-component";
+import { Stepper } from "components/stepper/Stepper";
 
 const useStep = () => {
   const [step, setStep] = useState(1);
@@ -32,18 +33,10 @@ export const StepShop = () => {
             <h1 className="logo">kometa</h1>
           </div>
         </header>
+
         <Stepper
-          defaultTitleColor="#787878"
-          defaultColor="#FFFFFF"
-          completeColor="#FF8454"
-          completeBarColor="#FF8454"
-          steps={[
-            { title: "destino" },
-            { title: "tamaño" },
-            { title: "fecha" },
-            { title: "resumen" },
-          ]}
-          activeStep={step}
+          titles={["destino", "tamaño", "fecha", "resumen"]}
+          step={step}
         />
         {managerStepComponent()}
       </div>

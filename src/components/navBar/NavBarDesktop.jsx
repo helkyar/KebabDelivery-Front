@@ -4,6 +4,9 @@ import { NavLogIn } from "./NavLogIn";
 
 const NavDesktop = () => {
   const [log, setLog] = useState(false);
+  const hola = () => {
+    console.log("hola");
+  };
 
   return (
     <>
@@ -20,7 +23,7 @@ const NavDesktop = () => {
             ></button>
             {log ? (
               <>
-                <NavLogIn />
+                <NavLogIn></NavLogIn>
                 <div onClick={() => setLog(!log)} className="log"></div>
               </>
             ) : null}

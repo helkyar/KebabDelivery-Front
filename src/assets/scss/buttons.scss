@@ -2,14 +2,14 @@
   z-index: 100;
   width: 300px;
   margin: 2rem auto;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   overflow-wrap: break-word;
 }
 
 .button-card {
   background-color: $secondaryColor;
   border: 2px solid $primaryColor;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   height: 170px;
   box-shadow: $shadowButtons;
   text-decoration: none;
@@ -25,7 +25,7 @@
 }
 
 .big {
-  height: 170px;
+  height: 10.625rem;
 }
 .small {
   height: 90px;
@@ -36,7 +36,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  margin-top: -8px;
+  margin-top: -0.5rem;
   background-color: $secondaryColor;
   padding: 1rem 0.5rem;
   height: -webkit-max-content;

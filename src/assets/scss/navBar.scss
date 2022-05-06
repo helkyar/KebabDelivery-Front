@@ -15,7 +15,7 @@
 }
 
 .button-menu {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   z-index: 200;
@@ -57,7 +57,7 @@
   bottom: 0;
   right: 0;
   left: 0;
-  z-index: 100;
+  z-index: 200;
   background-color: rgba(43, 43, 43, 0.176);
 }
 .navbar-movil {
@@ -88,20 +88,18 @@
   text-align: center;
   @media (min-width: $movil) {
     background-color: $secondaryColor;
-    width: -webkit-min-content;
-    width: -moz-min-content;
-    width: min-content;
     border-radius: 8px;
     padding: 10px;
     position: absolute;
-    top: 130%;
-    right: -15px;
+
+    top: 115%;
+    right: 0;
     z-index: 100;
     &::after {
       content: "";
       position: absolute;
       top: -20px;
-      right: 14.5%;
+      right: 25px;
       border-bottom: 10px solid rgb(255, 255, 255);
       border-top: 10px solid rgba(0, 0, 0, 0);
       border-left: 10px solid rgba(0, 0, 0, 0);

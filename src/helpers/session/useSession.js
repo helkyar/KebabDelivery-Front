@@ -25,11 +25,11 @@ export const useSession = () => {
           window.sessionStorage.removeItem("user");
           setJWT(null);
           setUser(null);
-          window.location.replace("");
+          navigate("/");
           console.error(err);
         });
     },
-    [setJWT]
+    [setJWT],
   );
 
   const logout = useCallback(() => {
@@ -37,7 +37,7 @@ export const useSession = () => {
     window.sessionStorage.removeItem("user");
     setJWT(null);
     setUser(null);
-    window.location.replace("");
+    navigate("/");
   }, [setJWT]);
 
   return { user, logout, loger, isLogged: Boolean(jwt), logfail };

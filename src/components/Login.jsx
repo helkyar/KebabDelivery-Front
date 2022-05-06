@@ -37,8 +37,8 @@ export const Login = ({ setOnOpen }) => {
       <form className="login-form session-form" onSubmit={userLogin}>
         <input
           className="login-username"
-          placeholder="username"
-          type="text"
+          placeholder="correo"
+          type="email"
           required
           value={user}
           onChange={(e) => setUser(e.target.value)}
