@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import ButtonCard from "components/buttoms/ButtonCard";
 import { useEffect } from "react";
-import paqSmall from '../assets/img/paquetesmall.svg'
+import '../assets/scss/deliverycontentdate.scss'
+
 import {
   getStorageCart,
   postStorageCart,
 } from "helpers/localStorage/storageCart";
 import { useState } from "react";
-import { FaBeer } from "react-icons/fa";
+
 
 export const DeliveryContentSize = ({ props }) => {
   const navigate = useNavigate();
