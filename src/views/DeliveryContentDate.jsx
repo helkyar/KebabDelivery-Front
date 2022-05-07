@@ -4,12 +4,14 @@ export const DeliveryContentDate = ({ props }) => {
   return (
     <>
       <div className="column-center">
-         <input type='date' className="input-primary"></input>
-         <input type='time' className="input-primary"></input>
-         <h3>Instrucciones al repartidor</h3>
-         <input type='text' className="input-third"></input>
+      <h4 className="resumen-titles">fecha</h4>
+         <input type='date' placeholder="Fecha" className="input-primary"></input>
+         <input type='time' placeholder="Hora" className="input-primary"></input>
+         <h4 className="resumen-titles">Instrucciones al repartidor</h4>
+         <textarea type='textarea' placeholder="Ejemplos: entregar en el buzón, código del intercomunicador, etc." rows='4' className="input-third"></textarea>
 
       </div>
+    
       
       <button onClick={props.next} className="button button-destination">siguiente</button>
       <button onClick={props.back} className="button button-destination">Atrás</button>
