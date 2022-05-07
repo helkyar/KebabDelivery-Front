@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { DeliveryContentSize } from "./DeliveryContentSize";
 import { DeliveryContentDate } from "./DeliveryContentDate";
 import { DeliveryContentResume } from "./DeliveryContentResume";
-// import Stepper from "react-simple-stepper-component";
 import { Stepper } from "components/stepper/Stepper";
 
 const useStep = () => {
