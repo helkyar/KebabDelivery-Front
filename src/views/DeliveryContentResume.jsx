@@ -23,13 +23,22 @@ export const DeliveryContentResume = ({ props }) => {
         />
       </div>
       <div className="resumen-section">
+        <h4 className="resumen-titles">Tipo de entrega</h4>
+        <input
+          type="text"
+          value={basket.size}
+          className="input-primary input-resumen"
+        />
+        
+      </div>
+      <div className="resumen-section">
         <h4 className="resumen-titles">fecha</h4>
-        <input type="date" className="input-primary input-resumen" />
-        <input type="time" className="input-primary input-resumen" />
+        <input type="date" value={basket.date} className="input-primary input-resumen" />
+        <input type="time" value={basket.time} className="input-primary input-resumen" />
       </div>
       <div>
         <h4 className="resumen-titles">instrucciones</h4>
-        <textarea className="input-primary textarea-resumen" />
+        <textarea value={basket.comment} className="input-primary textarea-resumen" />
       </div>
       <button onClick={props.back} className="button button-destination">
         Atrás
