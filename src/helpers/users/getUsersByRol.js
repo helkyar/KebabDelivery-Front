@@ -5,7 +5,7 @@ export default function getUser(rol, jwt) {
   return axios
     .get(`${ENDPOINT}/users/all/${rol}`, {
       headers: {
-        "auth-token": jwt,
+        authorization: jwt,
       },
     })
     .then((res) => {

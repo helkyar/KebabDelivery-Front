@@ -3,7 +3,12 @@
   flex-direction: row;
   justify-content: space-between;
 }
-
+.destination-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
 .delivery-box{
   width: 33%;
   display: flex;

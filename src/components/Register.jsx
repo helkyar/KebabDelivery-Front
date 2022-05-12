@@ -35,6 +35,10 @@ export const Register = () => {
     await postUser(credentials, jwt);
   };
 
+  const handleRolChange = (e) => {
+    setRol(e.target.value);
+  };
+
   const validCredentials = () => {
     //(!) Validation logic: should be separated form the view
     if (!name.trim() || !password.trim()) {
@@ -44,7 +48,6 @@ export const Register = () => {
 
     //(!) Variable return depending of the rol (deliverers have more params)
     return { phone, name, surname, email, password, rol };
-    //------------------------------------------------------
   };
 
   useEffect(() => {
@@ -87,7 +90,6 @@ export const Register = () => {
           value={surname}
           onChange={(e) => setSurname(e.target.value)}
         />
-
         <input
           className="register-data"
           placeholder="Telefono"
@@ -97,7 +99,22 @@ export const Register = () => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
+        <input
+          className="register-data"
+          placeholder="Contraseña"
+          type="password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
+        {user?.rol === "admin" && (
+          <select onChange={handleRolChange}>
+            <option value="admin">Administrador</option>
+            <option value="deliverer">Repartidor</option>
+            <option value="client">Cliente</option>
+          </select>
+        )}
         <button className="button register-button">Registrarme</button>
       </form>
     </>

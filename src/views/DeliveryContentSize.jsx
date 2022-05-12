@@ -14,38 +14,53 @@ export const DeliveryContentSize = ({ props }) => {
   const [basket, setBasket] = useState(getStorageCart());
 
   const tempCart = { ...basket };
-  console.log(tempCart);
 
   useEffect(() => {
     postStorageCart(basket);
   }, [basket]);
 
-  const handlerSubmit = (e) => {
-    e.preventDefault();
-
-    console.log("tamaño enviado");
-    tempCart.package = "small";
-    postStorageCart(tempCart);
-    props.next();
+  const handleSize = (e) => {
+    tempCart.size = e.target.value;
+    console.log(e.target.value);
+    setBasket(tempCart);
   };
 
   console.log(props);
   return (
     <>
       {" "}
+      {/* <form onSubmit={handlerSubmit}> */}
       <ButtonCard size="small" titleButton="Paquete">
         <div>
           <div className="delivery-box-section">
             <div className="delivery-box">
-              <input id="small" type="radio" name="size" value="paq-small" />
+              <input
+                onClick={handleSize}
+                id="small"
+                type="radio"
+                name="type"
+                value="Paquete pequeño"
+              />
               <label htmlFor="small">Pequeño</label>
             </div>
             <div className="delivery-box">
-              <input id="medium" type="radio" name="size" value="paq-medium" />
+              <input
+                onClick={handleSize}
+                id="medium"
+                type="radio"
+                name="type"
+                value="Paquete mediano"
+              />
               <label htmlFor="medium">Mediano</label>
             </div>
             <div className="delivery-box">
-              <input id="big" type="radio" name="size" value="big" />
+              <input
+                onClick={handleSize}
+                id="big"
+                type="radio"
+                name="type"
+                value="Paquete grande"
+              />
               <label htmlFor="big">Grande</label>
             </div>
           </div>
@@ -56,45 +71,43 @@ export const DeliveryContentSize = ({ props }) => {
           <div className="delivery-box-section">
             <div className="delivery-box">
               <input
+                onClick={handleSize}
                 id="sob-small"
                 type="radio"
-                name="sob-size"
-                value="sob-small"
+                name="type"
+                value="Sobre pequeño"
               />
               <label htmlFor="sob-small">Pequeño</label>
             </div>
             <div className="delivery-box">
               <input
+                onClick={handleSize}
                 id="sob-medium"
                 type="radio"
-                name="sob-size"
-                value="sob-medium"
+                name="type"
+                value="Sobre mediano"
               />
               <label htmlFor="sob-medium">Mediano</label>
             </div>
             <div className="delivery-box">
               <input
+                onClick={handleSize}
                 id="sob-big"
                 type="radio"
-                name="sob-size"
-                value="sob-medium"
+                name="type"
+                value="Sobre grande"
               />
               <label htmlFor="sob-big">Grande</label>
             </div>
           </div>
         </div>
       </ButtonCard>
-      <button onClick={handlerSubmit} className="button button-destination">
-        siguiente
-      </button>
-      <button
-        onClick={() => {
-          navigate("/");
-        }}
-        className="button button-destination"
-      >
-        Atrás
-      </button>
+      <div className="destination-section">
+        <button onClick={props.next} className="button button-destination">
+          siguiente
+        </button>
+      </div>
+      {/* </form> */}
     </>
   );
 };

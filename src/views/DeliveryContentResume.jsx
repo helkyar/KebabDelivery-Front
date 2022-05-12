@@ -20,9 +20,6 @@ export const DeliveryContentResume = ({ props }) => {
   };
   return (
     <>
-      <button onClick={props.back} className="button button-destination">
-        Atrás
-      </button>
       <form className="resumen-form" onSubmit={hadleSubmit}>
         <div className="resumen-section">
           <h4 className="resumen-titles">direccion</h4>
@@ -32,7 +29,7 @@ export const DeliveryContentResume = ({ props }) => {
             className="input-primary input-resumen"
             disabled={edit}
           />
-          {console.log(edit)}
+
           <input
             type="text"
             defaultValue={basket.to}
@@ -42,14 +39,28 @@ export const DeliveryContentResume = ({ props }) => {
         </div>
         <div className="resumen-section">
           <h4 className="resumen-titles">fecha</h4>
-          <input type="date" className="input-primary input-resumen" />
-          <input type="time" className="input-primary input-resumen" />
+          <input
+            type="date"
+            defaultValue={basket.date}
+            className="input-primary input-resumen"
+            disabled={edit}
+          />
+          <input
+            type="time"
+            defaultValue={basket.time}
+            className="input-primary input-resumen"
+            disabled={edit}
+          />
         </div>
         <div>
           <h4 className="resumen-titles">instrucciones</h4>
-          <textarea className="input-primary textarea-resumen" />
+          <textarea
+            defaultValue={basket.comment}
+            className="input-primary textarea-resumen"
+            disabled={edit}
+          />
         </div>
-        <button onClick={handleEdit} className="button">
+        <button onClick={handleEdit} className="button secondary-button">
           edit
         </button>
         <button className="button " disabled={edit}>

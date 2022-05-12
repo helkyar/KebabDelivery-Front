@@ -4,7 +4,7 @@ export default function patchUser(params, id, jwt) {
   return axios
     .patch(`${ENDPOINT}/users/update/${id}`, params, {
       headers: {
-        "auth-token": jwt,
+        authorization: jwt,
       },
     })
     .then((res) => {
