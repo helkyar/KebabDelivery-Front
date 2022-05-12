@@ -7,7 +7,7 @@ import {
 export const DeliveryContentResume = ({ props }) => {
   const [basket, setBasket] = useState(getStorageCart());
   const [edit, setEdit] = useState(true);
-  console.log(props);
+  console.log(getStorageCart());
 
   const hadleSubmit = (e) => {
     e.preventDefault();
