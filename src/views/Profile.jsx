@@ -8,16 +8,28 @@ export const Profile = () => {
   const [data, setData] = useState("");
   const [isDisabled, setIsDisabled] = useState(true);
   const [name, setName] = useState("");
+  const [surname, setSurname] = useState("");
+  const [phone, setPhone] = useState("");
   const { user, jwt } = useContext(Context);
+
+  if (name === "" && data) {
+    setName(data.user.name);
+  }
+  if (surname === "" && data) {
+    setSurname(data.user.surname);
+  }
+  if (phone === "" && data) {
+    setPhone(data.user.phone);
+  }
 
   function handleDisabled() {
     setIsDisabled(!isDisabled);
   }
 
-  const userRegister = async (e) => {
+  const userUpdate = async (e) => {
     e.preventDefault();
-    const credentials = name !== "" ? { name: name } : data.user.name;
-    await patchUser(credentials, user.id, jwt);
+    const sendCredentials = { name: name, surname: surname, phone: phone };
+    await patchUser(sendCredentials, user.id, jwt);
   };
 
   // const endpoint = ""
@@ -36,39 +48,39 @@ export const Profile = () => {
       <div className="profile-view">
         <ButtonCard size={"small"} titleButton={"Mis pedidos"} />
         <ButtonCard size={"small"} titleButton={"Direcciones favoritas"} />
-        <form className="my-data" onSubmit={userRegister}>
-          <input
+        <form className="my-data" onSubmit={userUpdate}>
+          <img
             className="my-data-edit-icon"
-            type="image"
             src="https://cdn-icons-png.flaticon.com/512/84/84380.png"
             onClick={handleDisabled}
           />
           <p className="my-data-title">Mis datos:</p>
           {data !== "" ? (
-            <input
-              className={isDisabled ? "isDisabled" : "isEnabled"}
-              type="text"
-              defaultValue={data.user.name}
-              onChange={(e) => setName(e.target.value)}
-              disabled={isDisabled}
-            />
+            <>
+              <input
+                className={isDisabled ? "isDisabled" : "isEnabled"}
+                type="text"
+                defaultValue={data.user.name}
+                onChange={(e) => setName(e.target.value)}
+                disabled={isDisabled}
+              />
+              <input
+                className={isDisabled ? "isDisabled" : "isEnabled"}
+                type="text"
+                defaultValue={data.user.surname}
+                onChange={(e) => setSurname(e.target.value)}
+                disabled={isDisabled}
+              />
+              <input
+                className={isDisabled ? "isDisabled" : "isEnabled"}
+                type="text"
+                defaultValue={data.user.phone}
+                onChange={(e) => setPhone(e.target.value)}
+                disabled={isDisabled}
+              />
+            </>
           ) : null}
-          {data !== "" ? (
-            <input
-              className={isDisabled ? "isDisabled" : "isEnabled"}
-              type="text"
-              defaultValue={data.user.surname}
-              disabled={isDisabled}
-            />
-          ) : null}
-          {data !== "" ? (
-            <input
-              className={isDisabled ? "isDisabled" : "isEnabled"}
-              type="text"
-              defaultValue={data.user.phone}
-              disabled={isDisabled}
-            />
-          ) : null}
+
           {!isDisabled ? <button>Confirmar cambios</button> : false}
         </form>
       </div>
