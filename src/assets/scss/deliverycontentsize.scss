@@ -22,7 +22,7 @@
     margin: 20px 0px -35px 0px;
     z-index: 2;
   }
-  label {
+  .inputpaq {
     display: inline-block;
     cursor: pointer;
     padding: 3rem 0.5rem 1rem 0.5rem;
@@ -34,10 +34,28 @@
     background-image: url('../img/paquetesmallBlack.svg');
    
   }
-  input[type="radio"]:checked+label {
+  input[type="radio"]:checked+.inputpaq {
     background-color: $primaryColor;
     color: $secondaryColor;
     background-image: url('../img/paquetesmall.svg');
+}
+////////////////////////@at-root
+.inputsobre {
+  display: inline-block;
+  cursor: pointer;
+  padding: 3rem 0.5rem 1rem 0.5rem;
+  margin: 5px;
+  border-radius: 8px;
+  box-shadow: $shadowButtons;
+  background-repeat: no-repeat;
+  background-position: center 8px;
+  background-image: url('../img/sobresmallblack.svg');
+ 
+}
+input[type="radio"]:checked+.inputsobre {
+  background-color: $primaryColor;
+  color: $secondaryColor;
+  background-image: url('../img//sobresmallwhite.svg');
 }
 }
 

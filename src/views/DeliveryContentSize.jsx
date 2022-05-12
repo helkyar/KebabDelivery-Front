@@ -39,17 +39,17 @@ export const DeliveryContentSize = ({ props }) => {
             <div className="delivery-box">
    
               <input onClick={handleSize} id="small" type='radio' name='type' value='Paquete pequeño' />
-              <label htmlFor='small' >Pequeño</label>
+              <label className="inputpaq" htmlFor='small' >Pequeño</label>
             </div>
             <div  className="delivery-box">
         
             <input onClick={handleSize}  id="medium" type='radio' name='type' value='Paquete mediano' />
-              <label htmlFor='medium'>Mediano</label>
+              <label className="inputpaq" htmlFor='medium'>Mediano</label>
             </div>
             <div  className="delivery-box">
            
             <input onClick={handleSize}  id="big" type='radio' name='type' value='Paquete grande' />
-              <label htmlFor='big'>Grande</label>
+              <label className="inputpaq" htmlFor='big'>Grande</label>
             </div>
           </div>
         </div>
@@ -59,18 +59,18 @@ export const DeliveryContentSize = ({ props }) => {
           <div className="delivery-box-section">
             <div className="delivery-box">
    
-              <input onClick={handleSize}  id="sob-small" type='radio' name='type' value='Sobre pequeño' />
-              <label htmlFor='sob-small' >Pequeño</label>
+              <input  onClick={handleSize}  id="sob-small" type='radio' name='type' value='Sobre pequeño' />
+              <label className="inputsobre" htmlFor='sob-small' >Pequeño</label>
             </div>
             <div  className="delivery-box">
         
-            <input onClick={handleSize}  id="sob-medium" type='radio' name='type' value='Sobre mediano' />
-              <label htmlFor='sob-medium'>Mediano</label>
+            <input  onClick={handleSize}  id="sob-medium" type='radio' name='type' value='Sobre mediano' />
+              <label  className="inputsobre" htmlFor='sob-medium'>Mediano</label>
             </div>
             <div  className="delivery-box">
            
-            <input onClick={handleSize}  id="sob-big" type='radio' name='type' value='Sobre grande' />
-              <label htmlFor='sob-big'>Grande</label>
+            <input  onClick={handleSize}  id="sob-big" type='radio' name='type' value='Sobre grande' />
+              <label className="inputsobre" htmlFor='sob-big'>Grande</label>
             </div>
           </div>
         </div>
