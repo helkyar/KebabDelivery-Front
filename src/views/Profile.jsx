@@ -13,10 +13,6 @@ export const Profile = () => {
   function handleDisabled() {
     setIsDisabled(!isDisabled);
   }
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("submited");
-  }
 
   const userRegister = async (e) => {
     e.preventDefault();
