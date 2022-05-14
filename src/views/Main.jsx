@@ -27,9 +27,6 @@ export const Main = () => {
       <ButtonCard size="big" titleButton="hacer delivery">
         <Destination />
       </ButtonCard>
-
-      {/* <button onClick={() => navigate("/template")}>templates</button>
-      <button onClick={() => logout()}>logout</button> */}
     </div>
   );
 };
