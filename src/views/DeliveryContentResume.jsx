@@ -15,6 +15,7 @@ export const DeliveryContentResume = ({ props }) => {
   };
   const handleEdit = (e) => {
     e.preventDefault();
+    // await postTemplate(basket,)
     setEdit(!edit);
     return console.log("funcion edit");
   };
