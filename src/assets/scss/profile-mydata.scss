@@ -1,0 +1,22 @@
+.my-data {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: white;
+  max-width: 100vh;
+  input {
+    border: none;
+  }
+  .isDisabled {
+    color: blue;
+    width: 50%;
+    border: none;
+  }
+  .isEnabled {
+    color: red;
+  }
+  .my-data-edit-icon {
+    align-self: flex-end;
+    width: 1rem;
+  }
+}
