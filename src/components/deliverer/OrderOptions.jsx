@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Modal from "components/modal/Modal";
 import CanvasDraw from "react-canvas-draw";
 
-export const OrderOptions = () => {
+export const OrderOptions = ({ order }) => {
   const canvas = useRef(null);
   const [accept, setAccept] = useState(false);
   const [openSign, setOpenSign] = useState(false);
