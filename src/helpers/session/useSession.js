@@ -17,7 +17,6 @@ export const useSession = () => {
           window.sessionStorage.setItem("user", userData);
           setJWT(token);
           setUser(userData);
-          window.location.replace("");
         })
         .catch((err) => {
           logfail = true;
@@ -29,7 +28,7 @@ export const useSession = () => {
           console.error(err);
         });
     },
-    [setJWT],
+    [setJWT]
   );
 
   const logout = useCallback(() => {

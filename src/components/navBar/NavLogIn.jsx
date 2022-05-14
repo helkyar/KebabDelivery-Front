@@ -18,13 +18,14 @@ const useModal = () => {
 };
 
 const NavLogIn = () => {
+  const { openLogIn, openSignUp, logIn, signUp } = useModal();
+  const { jwt, user } = useContext(Context);
   const navigate = useNavigate();
   const { logout } = useSession();
+
   const handleLogout = () => {
     logout();
   };
-  const { openLogIn, openSignUp, logIn, signUp } = useModal();
-  const { jwt, user } = useContext(Context);
   return (
     <>
       {jwt ? (

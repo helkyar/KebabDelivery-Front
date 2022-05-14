@@ -2,16 +2,20 @@ import { OrderOptions } from "components/deliverer/OrderOptions";
 import RolContext from "contexts/rolAuth";
 import UserContext from "contexts/user";
 import fetchCoordinates from "helpers/maps/fetchCoordinates";
+import { useSession } from "helpers/session/useSession";
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const Deliverer = () => {
   //Docs : https://developers.google.com/maps/documentation/geolocation/overview?_gl=1*m0lnpa*_ga*MTcwNjUzNTg1MS4xNjQ1NjIxMjIx*_ga_NRWSTWS78N*MTY1MjQyOTc3MS4xLjEuMTY1MjQyOTc4Ny4w
-  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
+  const { user, isLogged } = useSession();
   const { setAuthRol } = useContext(RolContext);
   const [coordinates, setCoordinates] = useState("");
   const [active, setActive] = useState(false);
 
   useEffect(() => {
+    if (!isLogged) navigate("/");
     setAuthRol("deliverer");
   }, [user]);
 

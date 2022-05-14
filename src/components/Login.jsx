@@ -5,43 +5,46 @@ import { useSession } from "helpers/session/useSession";
 
 export const Login = ({ setOnOpen }) => {
   const navigate = useNavigate();
-  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
   const [pswd, setPswd] = useState("");
-  const { loger, isLogged, logfail } = useSession();
+  const { user, loger, isLogged, logfail } = useSession();
 
-  const userLogin = async (e) => {
+  const emailLogin = async (e) => {
     e.preventDefault();
 
     //(!) Validation logic: should be separated form the view
-    if (!user.trim() || !pswd.trim()) {
+    if (!email.trim() || !pswd.trim()) {
       console.log("Introduce valid credentials");
       return;
     }
-    const credentials = { email: user.trim(), password: pswd.trim() };
+    const credentials = { email: email.trim(), password: pswd.trim() };
     //--------------------------------------------------------
 
     await loger(credentials);
-    setUser("");
+    setEmail("");
     setPswd("");
-    setOnOpen(false);
   };
 
   useEffect(() => {
-    if (isLogged) navigate("/");
+    if (isLogged) {
+      console.log(user);
+      user?.rol === "deliverer" ? navigate("/deliverer") : navigate("/");
+      // setOnOpen(false);
+    }
     if (logfail) alert("Retry");
   }, [logfail, isLogged, navigate]);
 
   return (
     <>
       <p className="modal-login-title">Inicia Sesion</p>
-      <form className="login-form session-form" onSubmit={userLogin}>
+      <form className="login-form session-form" onSubmit={emailLogin}>
         <input
-          className="login-username"
+          className="login-emailname"
           placeholder="correo"
           type="email"
           required
-          value={user}
-          onChange={(e) => setUser(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="login-password"
