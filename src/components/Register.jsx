@@ -70,6 +70,14 @@ export const Register = () => {
         />
         <input
           className="register-data"
+          placeholder="Contraseña"
+          type="password"
+          required
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <input
+          className="register-data"
           placeholder="Nombre"
           type="text"
           value={name}

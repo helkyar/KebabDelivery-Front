@@ -6,43 +6,68 @@ import {
 } from "helpers/localStorage/storageCart";
 export const DeliveryContentResume = ({ props }) => {
   const [basket, setBasket] = useState(getStorageCart());
-  console.log(props);
+  const [edit, setEdit] = useState(true);
+  console.log(getStorageCart());
+
+  const hadleSubmit = (e) => {
+    e.preventDefault();
+    return console.log("funcion");
+  };
+  const handleEdit = (e) => {
+    e.preventDefault();
+    // await postTemplate(basket,)
+    setEdit(!edit);
+    return console.log("funcion edit");
+  };
   return (
     <>
-      <div className="resumen-section">
-        <h4 className="resumen-titles">direccion</h4>
-        <input
-          type="text"
-          value={basket.from}
-          className="input-primary input-resumen"
-        />
-        <input
-          type="text"
-          value={basket.to}
-          className="input-primary input-resumen"
-        />
-      </div>
-      <div className="resumen-section">
-        <h4 className="resumen-titles">Tipo de entrega</h4>
-        <input
-          type="text"
-          value={basket.size}
-          className="input-primary input-resumen"
-        />
-        
-      </div>
-      <div className="resumen-section">
-        <h4 className="resumen-titles">fecha</h4>
-        <input type="date" value={basket.date} className="input-primary input-resumen" />
-        <input type="time" value={basket.time} className="input-primary input-resumen" />
-      </div>
-      <div>
-        <h4 className="resumen-titles">instrucciones</h4>
-        <textarea value={basket.comment} className="input-primary textarea-resumen" />
-      </div>
-      <button onClick={props.back} className="button button-destination">
-        Atrás
-      </button>
+      <form className="resumen-form" onSubmit={hadleSubmit}>
+        <div className="resumen-section">
+          <h4 className="resumen-titles">direccion</h4>
+          <input
+            type="text"
+            defaultValue={basket.from}
+            className="input-primary input-resumen"
+            disabled={edit}
+          />
+
+          <input
+            type="text"
+            defaultValue={basket.to}
+            className="input-primary input-resumen"
+            disabled={edit}
+          />
+        </div>
+        <div className="resumen-section">
+          <h4 className="resumen-titles">fecha</h4>
+          <input
+            type="date"
+            defaultValue={basket.date}
+            className="input-primary input-resumen"
+            disabled={edit}
+          />
+          <input
+            type="time"
+            defaultValue={basket.time}
+            className="input-primary input-resumen"
+            disabled={edit}
+          />
+        </div>
+        <div>
+          <h4 className="resumen-titles">instrucciones</h4>
+          <textarea
+            defaultValue={basket.comment}
+            className="input-primary textarea-resumen"
+            disabled={edit}
+          />
+        </div>
+        <button onClick={handleEdit} className="button secondary-button">
+          edit
+        </button>
+        <button className="button " disabled={edit}>
+          añadir al carrito
+        </button>
+      </form>
     </>
   );
 };

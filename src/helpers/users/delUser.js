@@ -4,7 +4,7 @@ export default function delUser(id, jwt) {
   return axios
     .delete(`${ENDPOINT}/users/delete/${id}`, {
       headers: {
-        "auth-token": jwt,
+        authorization: jwt,
       },
     })
     .then((res) => {

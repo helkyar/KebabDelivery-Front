@@ -1,5 +1,13 @@
 const getStorageCart = () => {
-  const modelStorage = { from: "", to: "" };
+  const modelStorage = {
+    from: "",
+    to: "",
+    package: "",
+    letter: "",
+    date: "",
+    time: "",
+    comment: "",
+  };
   const getStorage = JSON.parse(localStorage.getItem("cart"));
 
   return getStorage ? getStorage : modelStorage;
