@@ -5,7 +5,7 @@ export default function getUser(id, jwt) {
   return axios
     .get(`${ENDPOINT}/users/id/${id}`, {
       headers: {
-        "auth-token": jwt,
+        authorization: jwt,
       },
     })
     .then((res) => {

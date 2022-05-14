@@ -5,7 +5,7 @@ export default function postTemplate(params, jwt) {
   return axios
     .post(`${ENDPOINT}/template/add`, params, {
       headers: {
-        "auth-token": jwt,
+        authorization: jwt,
       },
     })
     .then((res) => {
