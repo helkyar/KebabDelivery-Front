@@ -10,7 +10,7 @@ export function RolAuthContextProvider({ children }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (authRol !== user?.rol) {
+    if (authRol !== user?.rol || user?.rol === "admin") {
       // navigate("/");
     }
   }, [authRol]);
