@@ -3,6 +3,8 @@ import Modal from "components/modal/Modal";
 import { Register } from "components/Register";
 import { useState, useEffect, useContext } from "react";
 import Context from "contexts/user";
+import { useSession } from "helpers/session/useSession";
+import { useNavigate } from "react-router-dom";
 const useModal = () => {
   const [logIn, setLogIn] = useState(false);
   const [signUp, setSignUp] = useState(false);
@@ -16,14 +18,19 @@ const useModal = () => {
 };
 
 const NavLogIn = () => {
+  const navigate = useNavigate();
+  const { logout } = useSession();
+  const handleLogout = () => {
+    logout();
+  };
   const { openLogIn, openSignUp, logIn, signUp } = useModal();
   const { jwt, user } = useContext(Context);
-
   return (
     <>
       {jwt ? (
         <div className="container-log">
-          <p>hola </p>
+          <p onClick={handleLogout}>Log out </p>
+          <p onClick={() => navigate("/profile")}>Profile </p>
         </div>
       ) : (
         <>

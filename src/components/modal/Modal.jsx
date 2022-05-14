@@ -9,7 +9,7 @@ const Modal = ({ onOpen, setOnOpen, children }) => {
 
   return reactDom.createPortal(
     <>
-      {onOpen ? (
+      {onOpen && (
         <div className="modal-container" onMouseDown={onClose}>
           <div className="modal" onMouseDown={(e) => e.stopPropagation()}>
             <button onClick={onClose} className="button-primary">
@@ -18,10 +18,10 @@ const Modal = ({ onOpen, setOnOpen, children }) => {
             {children}
           </div>
         </div>
-      ) : null}
+      )}
     </>,
 
-    document.getElementById("root"),
+    document.getElementById("root")
   );
 };
 
