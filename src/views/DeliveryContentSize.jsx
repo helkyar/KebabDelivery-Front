@@ -41,7 +41,9 @@ export const DeliveryContentSize = ({ props }) => {
                 name="type"
                 value="Paquete pequeño"
               />
-              <label htmlFor="small">Pequeño</label>
+              <label className="inputpaq" htmlFor="small">
+                Pequeño
+              </label>
             </div>
             <div className="delivery-box">
               <input
@@ -51,7 +53,9 @@ export const DeliveryContentSize = ({ props }) => {
                 name="type"
                 value="Paquete mediano"
               />
-              <label htmlFor="medium">Mediano</label>
+              <label className="inputpaq" htmlFor="medium">
+                Mediano
+              </label>
             </div>
             <div className="delivery-box">
               <input
@@ -61,7 +65,9 @@ export const DeliveryContentSize = ({ props }) => {
                 name="type"
                 value="Paquete grande"
               />
-              <label htmlFor="big">Grande</label>
+              <label className="inputpaq" htmlFor="big">
+                Grande
+              </label>
             </div>
           </div>
         </div>
@@ -77,7 +83,9 @@ export const DeliveryContentSize = ({ props }) => {
                 name="type"
                 value="Sobre pequeño"
               />
-              <label htmlFor="sob-small">Pequeño</label>
+              <label className="inputsobre" htmlFor="sob-small">
+                Pequeño
+              </label>
             </div>
             <div className="delivery-box">
               <input
@@ -87,7 +95,9 @@ export const DeliveryContentSize = ({ props }) => {
                 name="type"
                 value="Sobre mediano"
               />
-              <label htmlFor="sob-medium">Mediano</label>
+              <label className="inputsobre" htmlFor="sob-medium">
+                Mediano
+              </label>
             </div>
             <div className="delivery-box">
               <input
@@ -97,7 +107,9 @@ export const DeliveryContentSize = ({ props }) => {
                 name="type"
                 value="Sobre grande"
               />
-              <label htmlFor="sob-big">Grande</label>
+              <label className="inputsobre" htmlFor="sob-big">
+                Grande
+              </label>
             </div>
           </div>
         </div>
