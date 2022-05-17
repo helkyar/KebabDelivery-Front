@@ -39,5 +39,5 @@ export const useSession = () => {
     navigate("/");
   }, [setJWT]);
 
-  return { user, logout, loger, isLogged: Boolean(jwt), logfail };
+  return { jwt, user, logout, loger, isLogged: Boolean(jwt), logfail };
 };
