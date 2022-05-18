@@ -12,6 +12,7 @@ const ButtonCard = ({ children, size, titleButton }) => {
       <button
         className={`button-card ${size} button-secondary`}
         onClick={hadlerClick}
+        type="button"
       >
         {titleButton}
       </button>
