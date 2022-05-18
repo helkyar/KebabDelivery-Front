@@ -101,3 +101,7 @@ button:focus-visible {
   justify-content: center;
   align-items: center;
 }
+input:focus,
+textarea:focus {
+  outline: 1px solid $primaryColor;
+}

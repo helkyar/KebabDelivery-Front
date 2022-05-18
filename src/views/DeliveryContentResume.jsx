@@ -1,72 +1,91 @@
 import { Destination } from "components/destiny/Destination";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   getStorageCart,
   postStorageCart,
 } from "helpers/localStorage/storageCart";
+import { useNavigate } from "react-router-dom";
+import postOrder from "helpers/orders/postOrder";
+import Context from "../contexts/user";
+import Modal from "components/modal/Modal";
+import { NavLogIn } from "components/navBar/NavLogIn";
+
 export const DeliveryContentResume = ({ props }) => {
   const [basket, setBasket] = useState(getStorageCart());
-  const [edit, setEdit] = useState(true);
-  console.log(getStorageCart());
+  const [modalOpen, setModalOpen] = useState(false);
+  const { user, jwt } = useContext(Context);
+  const navigate = useNavigate();
 
+  let tempOrder = { ...basket };
   const hadleSubmit = (e) => {
     e.preventDefault();
-    return console.log("funcion");
+    if (user?.id) {
+      tempOrder.id_client = user.id;
+
+      setBasket(tempOrder);
+      postOrder(basket, jwt);
+      // console.log(basket);
+    } else {
+      console.log("user.id");
+      setModalOpen(true);
+    }
+
+    return;
   };
+
   const handleEdit = (e) => {
     e.preventDefault();
-    // await postTemplate(basket,)
-    setEdit(!edit);
-    return console.log("funcion edit");
+
+    navigate("/");
   };
+
+  // console.log(basket, "desde el resumen");
   return (
     <>
+      <Modal onOpen={modalOpen} setOnOpen={setModalOpen}>
+        <NavLogIn></NavLogIn>
+      </Modal>
       <form className="resumen-form" onSubmit={hadleSubmit}>
         <div className="resumen-section">
-          <h4 className="resumen-titles">direccion</h4>
-          <input
-            type="text"
-            defaultValue={basket.from}
-            className="input-primary input-resumen"
-            disabled={edit}
-          />
+          <div>
+            <h4 className="resumen-titles">paquete</h4>
+            {/[a-zA-Z0-9]/.test(basket.package) ? (
+              <p>1 {basket.package}</p>
+            ) : null}
+            {/[a-zA-Z0-9]/.test(basket.letter) ? (
+              <p>1 {basket.letter}</p>
+            ) : null}
+          </div>
+          <div>
+            <h4 className="resumen-titles">DESDE</h4>
+            <p>{basket.from}</p>
+          </div>
+          <div>
+            <h4 className="resumen-titles">hasta</h4>
+            <p>{basket.to}</p>
+          </div>
+          <div>
+            <h4 className="resumen-titles">fecha</h4>
+            <p>{basket.date}</p>
+          </div>
+          <div>
+            <h4 className="resumen-titles">hora</h4>
+            <p>{basket.time}</p>
+          </div>
+          <div>
+            <h4 className="resumen-titles">instrucciones</h4>
+            <p>{basket.comment}</p>
+          </div>
+        </div>
 
-          <input
-            type="text"
-            defaultValue={basket.to}
-            className="input-primary input-resumen"
-            disabled={edit}
-          />
-        </div>
-        <div className="resumen-section">
-          <h4 className="resumen-titles">fecha</h4>
-          <input
-            type="date"
-            defaultValue={basket.date}
-            className="input-primary input-resumen"
-            disabled={edit}
-          />
-          <input
-            type="time"
-            defaultValue={basket.time}
-            className="input-primary input-resumen"
-            disabled={edit}
-          />
-        </div>
-        <div>
-          <h4 className="resumen-titles">instrucciones</h4>
-          <textarea
-            defaultValue={basket.comment}
-            className="input-primary textarea-resumen"
-            disabled={edit}
-          />
-        </div>
-        <button onClick={handleEdit} className="button secondary-button">
+        <button
+          type="button"
+          onClick={handleEdit}
+          className="button secondary-button"
+        >
           edit
         </button>
-        <button className="button " disabled={edit}>
-          añadir al carrito
-        </button>
+        <button className="button ">añadir al carrito</button>
       </form>
     </>
   );
