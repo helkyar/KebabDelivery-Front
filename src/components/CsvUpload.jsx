@@ -18,11 +18,22 @@ export const CsvUpload = () => {
   };
 
   useEffect(()=>{
-    if(!csvfile.data) return;
+    if(!csvfile?.data) return;
     csvfile.data.forEach(async(order,i) => {
+      console.log(order);
       if(i===0) return; //header
-      const {from} = order;
-      const params = {from};
+      // id_client
+      const pacage = { 
+        from: order[1], 
+        to: order[2], 
+        id_delivered: order[3], 
+        pick_up_date: order[4], 
+        pick_up_time: order[5],    
+        pakage: order[6],    
+        letter: order[7],    
+        comment: order[8],
+      };
+  
       // post of order
     });
   },[csvfile])
