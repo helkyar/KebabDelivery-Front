@@ -1,7 +1,7 @@
 import axios from "axios";
 const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
 
-export default function getOrders(id, jwt) {
+export default function getCoordinates(id, jwt) {
   return axios
     .get(`${ENDPOINT}/orders/coordinates/${id}`, {
       headers: {
