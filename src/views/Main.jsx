@@ -5,6 +5,7 @@ import { SearchPackage } from "components/SearchPackage/SearchPackage";
 
 import Context from "contexts/user";
 import { useNavigate } from "react-router-dom";
+import { CsvUpload } from "components/CsvUpload";
 
 export const Main = () => {
   const { user } = useContext(Context);
@@ -24,6 +25,9 @@ export const Main = () => {
 
       <ButtonCard size="big" titleButton="hacer delivery">
         <Destination />
+      </ButtonCard>
+      <ButtonCard size="big" titleButton="subir csv">
+        <CsvUpload />
       </ButtonCard>
     </div>
   );

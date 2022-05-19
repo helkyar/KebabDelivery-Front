@@ -106,6 +106,17 @@
       border-right: 10px solid rgba(0, 0, 0, 0);
     }
   }
+  .nav-option {
+    padding: 0.2rem;
+    width: 4rem;
+    cursor: pointer;
+    background-color: $placeholder;
+    border-radius: $border-radius;
+    margin-bottom: 0;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 .log::after {
   background-color: rgba(0, 0, 0, 0);

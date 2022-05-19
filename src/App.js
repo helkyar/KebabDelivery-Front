@@ -13,7 +13,6 @@ import { NavBar } from "components/navBar/NavBar";
 import { Deliverer } from "views/Deliverer";
 import { RolAuthContextProvider } from "contexts/rolAuth";
 import { ShoppingCart } from "views/ShoppingCart";
-import { CsvUpload } from "views/CsvUpload";
 
 function App() {
   return (
@@ -27,7 +26,6 @@ function App() {
             <Route path="/deliverer" element={<Deliverer />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/shoppingCart" element={<ShoppingCart />} />
-            <Route path="/upload" element={<CsvUpload />} />
             <Route path="/*" element={<Error />} />
           </Routes>
           {/* <Redirect /> */}
