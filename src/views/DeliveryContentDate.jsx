@@ -20,10 +20,10 @@ export const DeliveryContentDate = ({ props }) => {
   const handleDate = (e) => {
     if (e.target.id === "date") {
       console.log(e.target.value);
-      tempCart.date = e.target.value;
+      tempCart.pick_up_date = e.target.value;
       setBasket(tempCart);
     } else if (e.target.id === "time") {
-      tempCart.time = e.target.value;
+      tempCart.pick_up_time = e.target.value;
       setBasket(tempCart);
     } else if (e.target.id === "comment") {
       tempCart.comment = e.target.value;
