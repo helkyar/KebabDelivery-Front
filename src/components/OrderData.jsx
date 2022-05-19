@@ -78,7 +78,11 @@ export const OrderData = () => {
           </>
         ) : null}
 
-        {!isDisabled ? <button>Confirmar cambios</button> : false}
+        {!isDisabled ? (
+          <button className="secondary-button">Confirmar cambios</button>
+        ) : (
+          false
+        )}
         <input
           className="button"
           type="button"

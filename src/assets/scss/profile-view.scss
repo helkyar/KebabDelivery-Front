@@ -4,4 +4,8 @@
   align-items: flex-start;
   justify-content: center;
   margin-top: 80px;
+
+  @media (max-width: 646px) {
+    flex-direction: column;
+  }
 }
