@@ -12,7 +12,6 @@ import { StepShop } from "views/StepShop";
 import { NavBar } from "components/navBar/NavBar";
 import { Deliverer } from "views/Deliverer";
 import { RolAuthContextProvider } from "contexts/rolAuth";
-import { CsvUpload } from "views/CsvUpload";
 
 function App() {
   return (
@@ -25,7 +24,6 @@ function App() {
             <Route path="/stepshop" element={<StepShop />} />
             <Route path="/deliverer" element={<Deliverer />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/upload" element={<CsvUpload />} />
             <Route path="/*" element={<Error />} />
           </Routes>
           {/* <Redirect /> */}
