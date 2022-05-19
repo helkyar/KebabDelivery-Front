@@ -23,14 +23,11 @@ const NavLogIn = () => {
   const navigate = useNavigate();
   const { logout } = useSession();
 
-  const handleLogout = () => {
-    logout();
-  };
   return (
     <>
       {jwt ? (
         <div className="container-log">
-          <p onClick={handleLogout}>Log out </p>
+          <p onClick={logout}>Log out </p>
           <p onClick={() => navigate("/profile")}>Profile </p>
         </div>
       ) : (

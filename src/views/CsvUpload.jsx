@@ -10,14 +10,12 @@ export const CsvUpload = () => {
   };
 
   const importCSV = () => {
-    const { csvfile } = this.state;
     Papa.parse(csvfile, {
-      complete: this.updateData,
-      header: true,
+      complete: (results) => setCsvfile(results),
     });
   };
 
-  const updateData = () => {
+  const viewData = () => {
     console.log(csvfile);
   };
 
@@ -33,9 +31,9 @@ export const CsvUpload = () => {
         onChange={handleChange}
       />
       <p />
-      <button onClick={importCSV}> Upload now! </button>
+      <button onClick={importCSV}> Process File! </button>
       <span> </span>
-      <button onClick={updateData}> Log results</button>
+      {csvfile?.data}
     </div>
   );
 };

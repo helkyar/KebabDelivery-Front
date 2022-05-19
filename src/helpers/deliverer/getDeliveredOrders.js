@@ -1,9 +1,9 @@
 import axios from "axios";
 const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
 
-export default function getDelivererState(id, jwt) {
+export default function getDeliveredOrders(id, jwt) {
   return axios
-    .get(`${ENDPOINT}/deliverer/state/${id}`, {
+    .get(`${ENDPOINT}/deliverer/delivered/${id}`, {
       headers: {
         authorization: jwt,
       },
@@ -13,7 +13,6 @@ export default function getDelivererState(id, jwt) {
       return res.data;
     })
     .catch(() => {
-      if (!id) return;
       console.log("ERR: 500");
     });
 }

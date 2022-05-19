@@ -3,6 +3,7 @@ import Modal from "components/modal/Modal";
 import CanvasDraw from "react-canvas-draw";
 import { useSession } from "helpers/session/useSession";
 import patchOrder from "helpers/orders/patchOrder";
+import getSignature from "helpers/deliverer/getSignature";
 
 export const OrderOptions = ({ delivery }) => {
   const canvas = useRef(null);
@@ -10,7 +11,7 @@ export const OrderOptions = ({ delivery }) => {
   const [accept, setAccept] = useState(Boolean(delivery.id_repartidor));
   const [order, setOrder] = useState(delivery);
   const [openSign, setOpenSign] = useState(false);
-  const [img, setImg] = useState(delivery.sign);
+  const [img, setImg] = useState();
 
   useEffect(() => {
     if (!user.id) return;
@@ -36,6 +37,8 @@ export const OrderOptions = ({ delivery }) => {
     if (!user.id) return;
     async function updateOrder() {
       await patchOrder(order, order.id, jwt);
+      const image = await getSignature(order.id, jwt);
+      setImg(image);
     }
 
     updateOrder();
@@ -56,8 +59,6 @@ export const OrderOptions = ({ delivery }) => {
 
   const handleSign = async () => {
     const image = canvas.current.getDataURL();
-    // const image = canvas.current.getSaveData();
-    setImg(image);
     setOpenSign(false);
     setOrder((prevState) => {
       let data = Object.assign({}, prevState);
@@ -65,51 +66,45 @@ export const OrderOptions = ({ delivery }) => {
       data.sign = image;
       return data;
     });
-    // Save img
+
+    await patchOrder(order, order.id, jwt);
   };
-  console.log(img);
 
   return (
     <>
-      <article>
-        <h6>Paquete 1</h6>
-        <button className="button" onClick={handleAccept}>
-          {accept ? "Rechazar" : "Aceptar"} pedido
-        </button>
-        {accept && (
-          <>
-            <button onClick={handlePickUp} className="button">
-              Mercar recogido
+      {order.estado < 4 && (
+        <>
+          <article>
+            <h6>Paquete 1</h6>
+            <button className="button" onClick={handleAccept}>
+              {accept ? "Rechazar" : "Aceptar"} pedido
             </button>
-            <button className="button" onClick={() => setOpenSign(true)}>
-              Firmar entrega
+            {accept && (
+              <>
+                <button onClick={handlePickUp} className="button">
+                  Mercar recogido
+                </button>
+                <button className="button" onClick={() => setOpenSign(true)}>
+                  Firmar entrega
+                </button>
+                <button className="button">Ver pedido</button>
+              </>
+            )}
+          </article>
+          <Modal onOpen={openSign} setOnOpen={setOpenSign}>
+            <CanvasDraw ref={canvas} />
+            <button onClick={handleSign} className="sign button">
+              Aceptar
             </button>
-            <button className="button">Ver pedido</button>
-          </>
-        )}
-        <img src={img} alt="" />
-        <form
-          encType="multipart/form-data"
-          action="http://localhost:3003/deliverer/img"
-          method="POST"
-        >
-          <input type="file" name="file" />
-          <input type="submit" />
-        </form>
-      </article>
-      <Modal onOpen={openSign} setOnOpen={setOpenSign}>
-        <CanvasDraw ref={canvas} />
-        <button onClick={handleSign} className="sign button">
-          Aceptar
-        </button>
-        <button
-          onClick={() => canvas.current.clear()}
-          // onClick={() => canvas.current.loadSaveData(img)}
-          className="sign button secondary-button"
-        >
-          Reset
-        </button>
-      </Modal>
+            <button
+              onClick={() => canvas.current.clear()}
+              className="sign button secondary-button"
+            >
+              Reset
+            </button>
+          </Modal>
+        </>
+      )}
     </>
   );
 };

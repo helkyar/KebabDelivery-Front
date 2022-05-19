@@ -17,7 +17,7 @@ export const Deliverer = () => {
   const { user, jwt, isLogged } = useSession();
   const { setIsActive, alarm } = useTimer(300000);
   const { setAuthRol } = useContext(RolContext);
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState(getDelivererState(user?.id, jwt));
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export const Deliverer = () => {
 
   useEffect(() => {
     const getData = async () => {
-      if (!user.id) return;
+      if (!user?.id) return;
       if (alarm) setIsActive(true);
 
       // const { location } = await fetchCoordinates(jwt);
@@ -42,17 +42,17 @@ export const Deliverer = () => {
     };
     if (active) getData();
     else setIsActive(false);
-  }, [user, alarm]);
+  }, [user, alarm, active]);
 
   const handleActivate = async () => {
-    setActive((state) => !state);
+    setActive(!active);
   };
 
   useEffect(() => {
     async function updateDeliverer() {
       await patchActivateDeliverer({ active }, user.id, jwt);
     }
-    if (user.id) updateDeliverer();
+    if (user?.id) updateDeliverer();
   }, [active]);
 
   return (
