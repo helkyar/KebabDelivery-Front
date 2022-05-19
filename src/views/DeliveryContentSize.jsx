@@ -19,103 +19,125 @@ export const DeliveryContentSize = ({ props }) => {
     postStorageCart(basket);
   }, [basket]);
 
-  const handleSize = (e) => {
-    tempCart.size = e.target.value;
-    console.log(e.target.value);
+  const handleLetter = (e) => {
+    tempCart.letter = e.target.value;
+    // console.log(e.target.value);
+    setBasket(tempCart);
+  };
+  const handlePackage = (e) => {
+    tempCart.package = e.target.value;
+    // console.log(e.target.value);
     setBasket(tempCart);
   };
 
-  console.log(props);
+  // console.log(props);
   return (
     <>
       {" "}
       {/* <form onSubmit={handlerSubmit}> */}
       <ButtonCard size="small" titleButton="Paquete">
-        <div>
-          <div className="delivery-box-section">
-            <div className="delivery-box">
-              <input
-                onClick={handleSize}
-                id="small"
-                type="radio"
-                name="type"
-                value="Paquete pequeño"
-              />
-              <label className="inputpaq" htmlFor="small">
-                Pequeño
-              </label>
-            </div>
-            <div className="delivery-box">
-              <input
-                onClick={handleSize}
-                id="medium"
-                type="radio"
-                name="type"
-                value="Paquete mediano"
-              />
-              <label className="inputpaq" htmlFor="medium">
-                Mediano
-              </label>
-            </div>
-            <div className="delivery-box">
-              <input
-                onClick={handleSize}
-                id="big"
-                type="radio"
-                name="type"
-                value="Paquete grande"
-              />
-              <label className="inputpaq" htmlFor="big">
-                Grande
-              </label>
-            </div>
+        <form className="delivery-box-section">
+          <div className="delivery-box">
+            <input
+              onClick={handlePackage}
+              id="small"
+              type="radio"
+              name="type"
+              value="Paquete pequeño"
+              defaultChecked={
+                basket.package === "Paquete pequeño" ? true : false
+              }
+              required
+            />
+            <label className="inputpaq" htmlFor="small">
+              Pequeño
+            </label>
           </div>
-        </div>
+          <div className="delivery-box">
+            <input
+              onClick={handlePackage}
+              id="medium"
+              type="radio"
+              name="type"
+              value="Paquete mediano"
+              defaultChecked={
+                basket.package === "Paquete mediano" ? true : false
+              }
+              required
+            />
+            <label className="inputpaq" htmlFor="medium">
+              Mediano
+            </label>
+          </div>
+          <div className="delivery-box">
+            <input
+              onClick={handlePackage}
+              id="big"
+              type="radio"
+              name="type"
+              value="Paquete grande"
+              defaultChecked={
+                basket.package === "Paquete grande" ? true : false
+              }
+              required
+            />
+            <label className="inputpaq" htmlFor="big">
+              Grande
+            </label>
+          </div>
+        </form>
       </ButtonCard>
       <ButtonCard size="small" titleButton="Sobre">
-        <div>
-          <div className="delivery-box-section">
-            <div className="delivery-box">
-              <input
-                onClick={handleSize}
-                id="sob-small"
-                type="radio"
-                name="type"
-                value="Sobre pequeño"
-              />
-              <label className="inputsobre" htmlFor="sob-small">
-                Pequeño
-              </label>
-            </div>
-            <div className="delivery-box">
-              <input
-                onClick={handleSize}
-                id="sob-medium"
-                type="radio"
-                name="type"
-                value="Sobre mediano"
-              />
-              <label className="inputsobre" htmlFor="sob-medium">
-                Mediano
-              </label>
-            </div>
-            <div className="delivery-box">
-              <input
-                onClick={handleSize}
-                id="sob-big"
-                type="radio"
-                name="type"
-                value="Sobre grande"
-              />
-              <label className="inputsobre" htmlFor="sob-big">
-                Grande
-              </label>
-            </div>
+        <form className="delivery-box-section">
+          <div className="delivery-box">
+            <input
+              onClick={handleLetter}
+              id="sob-small"
+              type="radio"
+              name="type"
+              value="Sobre pequeño"
+              defaultChecked={basket.letter === "Sobre pequeño" ? true : false}
+            />
+            <label className="inputsobre" htmlFor="sob-small">
+              Pequeño
+            </label>
           </div>
-        </div>
+          <div className="delivery-box">
+            <input
+              onClick={handleLetter}
+              id="sob-medium"
+              type="radio"
+              name="type"
+              value="Sobre mediano"
+              defaultChecked={basket.letter === "Sobre mediano" ? true : false}
+            />
+            <label className="inputsobre" htmlFor="sob-medium">
+              Mediano
+            </label>
+          </div>
+          <div className="delivery-box">
+            <input
+              onClick={handleLetter}
+              id="sob-big"
+              type="radio"
+              name="type"
+              value="Sobre grande"
+              defaultChecked={basket.letter === "Sobre grande" ? true : false}
+            />
+            <label className="inputsobre" htmlFor="sob-big">
+              Grande
+            </label>
+          </div>
+        </form>
       </ButtonCard>
       <div className="destination-section">
-        <button onClick={props.next} className="button button-destination">
+        <button
+          onClick={props.next}
+          disabled={
+            basket.letter.length > 0 || basket.package.length > 0 ? false : true
+          }
+          className="button button-destination"
+        >
           siguiente
         </button>
       </div>

@@ -46,6 +46,7 @@ export const DeliveryContentDate = ({ props }) => {
           type="date"
           placeholder="Fecha"
           className="input-primary"
+          required
         ></input>
         <input
           id="time"
@@ -54,6 +55,7 @@ export const DeliveryContentDate = ({ props }) => {
           type="time"
           min="08:00"
           max="21:00"
+          required
           placeholder="Hora"
           className="input-primary"
         ></input>

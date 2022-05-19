@@ -11,7 +11,11 @@ const Modal = ({ onOpen, setOnOpen, children }) => {
     <>
       {onOpen && (
         <div className="modal-container" onMouseDown={onClose}>
-          <div className="modal" onMouseDown={(e) => e.stopPropagation()}>
+          <div
+            className="modal"
+            onSubmit={onClose}
+            onMouseDown={(e) => e.stopPropagation()}
+          >
             <button onClick={onClose} className="button-primary">
               X
             </button>
@@ -21,7 +25,7 @@ const Modal = ({ onOpen, setOnOpen, children }) => {
       )}
     </>,
 
-    document.getElementById("root")
+    document.getElementById("root"),
   );
 };
 
