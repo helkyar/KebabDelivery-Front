@@ -23,18 +23,15 @@ const NavLogIn = () => {
   const navigate = useNavigate();
   const { logout } = useSession();
 
-  const handleLogout = () => {
-    logout();
-  };
   return (
     <>
       {jwt ? (
         <div className="container-log">
-          <p className="button" onClick={handleLogout}>
-            Log out
+          <p className="nav-option" onClick={logout}>
+            Log out{" "}
           </p>
-          <p className="secondary-button" onClick={() => navigate("/profile")}>
-            Profile
+          <p className="nav-option" onClick={() => navigate("/profile")}>
+            Profile{" "}
           </p>
         </div>
       ) : (

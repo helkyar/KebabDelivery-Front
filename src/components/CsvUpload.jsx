@@ -1,4 +1,5 @@
 import Papa from "papaparse";
+import { useEffect } from "react";
 import { useRef, useState } from "react";
 
 export const CsvUpload = () => {
@@ -10,20 +11,24 @@ export const CsvUpload = () => {
   };
 
   const importCSV = () => {
-    const { csvfile } = this.state;
     Papa.parse(csvfile, {
-      complete: this.updateData,
-      header: true,
+      complete: (results) => setCsvfile(results),
     });
+    
   };
 
-  const updateData = () => {
-    console.log(csvfile);
-  };
+  useEffect(()=>{
+    if(!csvfile.data) return;
+    csvfile.data.forEach(async(order,i) => {
+      if(i===0) return; //header
+      const {from} = order;
+      const params = {from};
+      // post of order
+    });
+  },[csvfile])
 
   return (
-    <div className="App">
-      <h2>Import CSV File!</h2>
+    <div className="csv-form">
       <input
         className="csv-input"
         type="file"
@@ -31,11 +36,8 @@ export const CsvUpload = () => {
         name="file"
         placeholder={null}
         onChange={handleChange}
-      />
-      <p />
-      <button onClick={importCSV}> Upload now! </button>
-      <span> </span>
-      <button onClick={updateData}> Log results</button>
+      />      
+      <button onClick={importCSV}> Process File! </button>
     </div>
   );
 };

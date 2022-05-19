@@ -1,16 +1,15 @@
 import axios from "axios";
 const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
-export default async function patchUser(params, id, jwt) {
-  console.log(params, id, jwt, "LOS PARAMS");
-  return await axios
-    .patch(`${ENDPOINT}/users/update/${id}`, params, {
+
+export default function getSignature(id, jwt) {
+  return axios
+    .get(`${ENDPOINT}/orders/sign/${id}`, {
       headers: {
         authorization: jwt,
       },
     })
     .then((res) => {
       if (!res.data) throw new Error("Response is NOT ok");
-      console.log("USER PATCH", res.data);
       return res.data;
     })
     .catch(() => {

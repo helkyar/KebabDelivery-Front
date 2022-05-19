@@ -13,6 +13,7 @@ export default function getDelivererState(id, jwt) {
       return res.data;
     })
     .catch(() => {
+      if (!id) return;
       console.log("ERR: 500");
     });
 }

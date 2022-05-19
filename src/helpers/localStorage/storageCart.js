@@ -2,10 +2,14 @@ const getStorageCart = () => {
   const modelStorage = {
     from: "",
     to: "",
-    package: "",
+    id_client: "",
+    id_delivered: "",
+    pick_up_date: "",
+    pick_up_time: "",
+    delivered_time: "",
+    tracking_code: "",
+    pakage: "",
     letter: "",
-    date: "",
-    time: "",
     comment: "",
   };
   const getStorage = JSON.parse(localStorage.getItem("cart"));
