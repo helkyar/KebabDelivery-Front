@@ -79,7 +79,12 @@ export const OrderData = () => {
         ) : null}
 
         {!isDisabled ? <button>Confirmar cambios</button> : false}
-        <input type="button" value="aaa" onClick={logout}></input>
+        <input
+          className="button"
+          type="button"
+          value="Log Out"
+          onClick={logout}
+        />
       </form>
     </div>
   );

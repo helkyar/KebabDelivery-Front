@@ -3,7 +3,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   margin: -1rem auto;
-  min-height: 10rem;
+  min-height: 20rem;
   flex-grow: 0.2;
   .my-data-title {
     color: #ff8c60;
@@ -11,13 +11,18 @@
 }
 .my-data-form {
   display: flex;
+  padding: 1rem;
   flex-direction: column;
-  min-height: 8rem;
   border-radius: 15px;
   flex-wrap: wrap;
   background-color: white;
+  min-height: 10rem;
   input {
     border: none;
+  }
+  .button {
+    margin-top: 1.5rem;
+    align-self: center;
   }
   .isDisabled {
     display: flex;
