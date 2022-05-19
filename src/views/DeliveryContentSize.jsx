@@ -25,7 +25,7 @@ export const DeliveryContentSize = ({ props }) => {
     setBasket(tempCart);
   };
   const handlePackage = (e) => {
-    tempCart.package = e.target.value;
+    tempCart.pakage = e.target.value;
     // console.log(e.target.value);
     setBasket(tempCart);
   };
@@ -45,7 +45,7 @@ export const DeliveryContentSize = ({ props }) => {
               name="type"
               value="Paquete pequeño"
               defaultChecked={
-                basket.package === "Paquete pequeño" ? true : false
+                basket.pakage === "Paquete pequeño" ? true : false
               }
               required
             />
@@ -61,7 +61,7 @@ export const DeliveryContentSize = ({ props }) => {
               name="type"
               value="Paquete mediano"
               defaultChecked={
-                basket.package === "Paquete mediano" ? true : false
+                basket.pakage === "Paquete mediano" ? true : false
               }
               required
             />
@@ -76,9 +76,7 @@ export const DeliveryContentSize = ({ props }) => {
               type="radio"
               name="type"
               value="Paquete grande"
-              defaultChecked={
-                basket.package === "Paquete grande" ? true : false
-              }
+              defaultChecked={basket.pakage === "Paquete grande" ? true : false}
               required
             />
             <label className="inputpaq" htmlFor="big">
@@ -134,7 +132,7 @@ export const DeliveryContentSize = ({ props }) => {
         <button
           onClick={props.next}
           disabled={
-            basket.letter.length > 0 || basket.package.length > 0 ? false : true
+            basket.letter.length > 0 || basket.pakage.length > 0 ? false : true
           }
           className="button button-destination"
         >

@@ -24,6 +24,8 @@ export const DeliveryContentResume = ({ props }) => {
 
       setBasket(tempOrder);
       postOrder(basket, jwt);
+      navigate("/shoppingCart");
+      // postStorageCart(null);
       // console.log(basket);
     } else {
       console.log("user.id");
@@ -43,14 +45,17 @@ export const DeliveryContentResume = ({ props }) => {
   return (
     <>
       <Modal onOpen={modalOpen} setOnOpen={setModalOpen}>
-        <NavLogIn></NavLogIn>
+        <div className="">
+          <button className="button">iniciar sesión</button>
+          <button className="button secondary-button">registrarse</button>
+        </div>
       </Modal>
       <form className="resumen-form" onSubmit={hadleSubmit}>
         <div className="resumen-section">
           <div>
             <h4 className="resumen-titles">paquete</h4>
             {/[a-zA-Z0-9]/.test(basket.package) ? (
-              <p>1 {basket.package}</p>
+              <p>1 {basket.pakage}</p>
             ) : null}
             {/[a-zA-Z0-9]/.test(basket.letter) ? (
               <p>1 {basket.letter}</p>
@@ -66,11 +71,11 @@ export const DeliveryContentResume = ({ props }) => {
           </div>
           <div>
             <h4 className="resumen-titles">fecha</h4>
-            <p>{basket.date}</p>
+            <p>{basket.pick_up_date}</p>
           </div>
           <div>
             <h4 className="resumen-titles">hora</h4>
-            <p>{basket.time}</p>
+            <p>{basket.pick_up_time}</p>
           </div>
           <div>
             <h4 className="resumen-titles">instrucciones</h4>
