@@ -14,10 +14,9 @@ export const Login = ({ setOnOpen }) => {
 
     //(!) Validation logic: should be separated form the view
     if (!email.trim() || !pswd.trim()) {
-      console.log("Introduce valid credentials");
       return;
     }
-    const credentials = { email: email.trim(), password: pswd.trim() };
+    const credentials = { email: email.trim(), password: pswd.trim().toString() };
     //--------------------------------------------------------
 
     await loger(credentials);
