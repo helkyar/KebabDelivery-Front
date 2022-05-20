@@ -28,6 +28,7 @@ export const CsvUpload = () => {
     if (!csvfile?.data || user?.email) return;
     csvfile.data.forEach(async (order, i) => {
       console.log(order);
+
       if (i === 0) return; //header
       if (order.length < 8) return;
       const pakage = {
