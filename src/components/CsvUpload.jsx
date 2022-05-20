@@ -28,7 +28,6 @@ export const CsvUpload = () => {
     }
     if (!csvfile?.data || user?.email) return;
     csvfile.data.forEach(async (order, i) => {
-      console.log(order);
       if (i < 2) return; //header
       if (order.length < 7) return;
       const pakage = {
@@ -39,6 +38,7 @@ export const CsvUpload = () => {
         letter: order[4],
         comment: order[5],
       };
+      pakage.id_client = user.id;
       const data = await postOrder(pakage, jwt);
       const email = {
         to: user.email,
@@ -47,6 +47,8 @@ export const CsvUpload = () => {
       // await sendEmail(email)
     });
   }, [csvfile, user]);
+
+  console.log(csvfile, "CSV");
 
   return (
     <div className="csv-form">
