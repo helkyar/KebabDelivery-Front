@@ -46,7 +46,7 @@ export const DeliveryContentResume = ({ props }) => {
       <Modal onOpen={modalOpen} setOnOpen={setModalOpen}>
         <ModalSession></ModalSession>
       </Modal>
-      <form className="resumen-form" onSubmit={hadleSubmit}>
+      <div className="resumen-form">
         <div className="resumen-section">
           <div>
             <h4 className="resumen-titles">paquete</h4>
@@ -86,8 +86,10 @@ export const DeliveryContentResume = ({ props }) => {
         >
           edit
         </button>
-        <button className="button ">añadir al carrito</button>
-      </form>
+        <button onClick={hadleSubmit} className="button ">
+          añadir al carrito
+        </button>
+      </div>
     </>
   );
 };

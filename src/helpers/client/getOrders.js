@@ -3,7 +3,7 @@ const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
 
 export default function getOrders(id, jwt) {
   return axios
-    .get(`${ENDPOINT}/client/orders/${id}`, {
+    .get(`${ENDPOINT}/orders/client/${id}`, {
       headers: {
         authorization: jwt,
       },
