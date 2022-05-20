@@ -4,9 +4,11 @@ import { useNavigate } from "react-router";
 export const Error = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="error-view">
       <h1>404</h1>
-      <button onClick={() => navigate("/")}>Go Back</button>
+      <button className="button" onClick={() => navigate("/")}>
+        Go Back
+      </button>
     </div>
   );
 };

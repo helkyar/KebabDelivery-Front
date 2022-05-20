@@ -45,3 +45,18 @@
     width: 1rem;
   }
 }
+.container-orders-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  .orders-profile {
+    width: 17rem;
+    height: 100%;
+    .button-oreders-profile {
+      margin: 0 auto;
+      min-width: 4rem;
+      width: 100%;
+    }
+  }
+}
