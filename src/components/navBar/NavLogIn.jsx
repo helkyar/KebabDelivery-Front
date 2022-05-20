@@ -27,12 +27,12 @@ const NavLogIn = () => {
     <>
       {jwt ? (
         <div className="container-log">
-          <p className="nav-option" onClick={logout}>
+          <button className="nav-option" onClick={logout}>
             Log out{" "}
-          </p>
-          <p className="nav-option" onClick={() => navigate("/profile")}>
+          </button>
+          <button className="nav-option" onClick={() => navigate("/profile")}>
             Profile{" "}
-          </p>
+          </button>
         </div>
       ) : (
         <>
