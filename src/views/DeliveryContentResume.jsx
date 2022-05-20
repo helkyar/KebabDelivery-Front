@@ -23,17 +23,12 @@ export const DeliveryContentResume = ({ props }) => {
   const hadleSubmit = (e) => {
     e.preventDefault();
     if (user?.id) {
-      // tempOrder.id_client = user.id;
-      const time = new Date(basket.pick_up_time);
-      console.log(time);
+      tempOrder.id_client = user.id;
 
-      // setBasket(tempOrder);
-      // postOrder(basket, jwt);
-      // navigate("/shoppingCart");
-      // postStorageCart(null);
-      // console.log(basket);
+      postOrder(tempOrder, jwt);
+      postStorageCart(null);
+      navigate("/shoppingCart");
     } else {
-      console.log("user.id");
       setModalOpen(true);
     }
 

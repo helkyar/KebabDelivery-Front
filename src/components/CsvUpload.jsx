@@ -29,25 +29,24 @@ export const CsvUpload = () => {
     csvfile.data.forEach(async (order, i) => {
       console.log(order);
 
-      if(i===0) return; //header
-      if(order.length < 8) return;
-      const pakage = { 
-        from: order[0], 
-        to: order[1], 
-        id_delivered: order[2], 
-        pick_up_date: order[3], 
-        pick_up_time: order[4],    
-        pakage: order[5],    
-        letter: order[6],    
+      if (i === 0) return; //header
+      if (order.length < 8) return;
+      const pakage = {
+        from: order[0],
+        to: order[1],
+        id_delivered: order[2],
+        pick_up_date: order[3],
+        pick_up_time: order[4],
+        pakage: order[5],
+        letter: order[6],
         comment: order[7],
       };
-    const data = await postOrder(pakage, jwt)
-     const email = {
-      to: user.email, 
-      text: `Tu paquete ha sido registrado correctamente, usa el siguiente código para hacer el seguimiento ${data.id}`
-    }
+      const data = await postOrder(pakage, jwt);
+      const email = {
+        to: user.email,
+        text: `Tu paquete ha sido registrado correctamente, usa el siguiente código para hacer el seguimiento ${data.id}`,
+      };
       // await sendEmail(email)
-
     });
   }, [csvfile, user]);
 
