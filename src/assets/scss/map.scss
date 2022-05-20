@@ -1,0 +1,15 @@
+.map-view{
+    height: 60%;
+}
+.map{
+    width: 80%;
+    min-height: 55vh;
+    margin: 1rem auto; 
+    display: block;
+}
+.back-btn{
+    display: block;
+    width: 4rem;
+    margin-left: calc(50% - 2rem) ;
+    border-radius: $border-radius;
+}
