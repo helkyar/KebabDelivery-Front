@@ -76,7 +76,8 @@ export const OrderData = () => {
             <p className={isDisabled ? "isDisabled" : "isEnabled"}>
               <label>Phone number: </label>{" "}
               <input
-                type="text"
+                type="tel"
+                pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
                 defaultValue={data.user.phone}
                 onChange={(e) => setPhone(e.target.value)}
                 disabled={isDisabled}
