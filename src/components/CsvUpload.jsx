@@ -1,5 +1,5 @@
 import postOrder from "helpers/orders/postOrder";
-import sendEmail from "helpers/orders/sendEmail"
+import sendEmail from "helpers/orders/sendEmail";
 import { useSession } from "helpers/session/useSession";
 import Papa from "papaparse";
 import { useEffect } from "react";
@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 
 export const CsvUpload = () => {
   const [csvfile, setCsvfile] = useState();
-  const {jwt, isLogged, user} = useSession();
+  const { jwt, isLogged, user } = useSession();
   const fileInput = useRef(null);
 
   const handleChange = (event) => {
@@ -18,18 +18,17 @@ export const CsvUpload = () => {
     Papa.parse(csvfile, {
       complete: (results) => setCsvfile(results),
     });
-    
   };
 
-  useEffect(()=>{
-    
-    if(!isLogged){
-// open modal
+  useEffect(() => {
+    if (!isLogged) {
+      // open modal
       return;
     }
-    if(!csvfile?.data || user?.email) return;
-    csvfile.data.forEach(async(order,i) => {
+    if (!csvfile?.data || user?.email) return;
+    csvfile.data.forEach(async (order, i) => {
       console.log(order);
+
       if(i===0) return; //header
       if(order.length < 8) return;
       const pakage = { 
@@ -48,8 +47,9 @@ export const CsvUpload = () => {
       text: `Tu paquete ha sido registrado correctamente, usa el siguiente código para hacer el seguimiento ${data.id}`
     }
       // await sendEmail(email)
+
     });
-  },[csvfile, user])
+  }, [csvfile, user]);
 
   return (
     <div className="csv-form">
@@ -60,7 +60,7 @@ export const CsvUpload = () => {
         name="file"
         placeholder={null}
         onChange={handleChange}
-      />      
+      />
       <button onClick={importCSV}> Process File! </button>
     </div>
   );
