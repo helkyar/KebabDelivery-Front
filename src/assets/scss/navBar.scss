@@ -110,9 +110,10 @@
     padding: 0.2rem;
     width: 4rem;
     cursor: pointer;
-    background-color: $placeholder;
+    background-color: $primaryColor;
     border-radius: $border-radius;
-    margin-bottom: 0;
+    margin: 0.5rem 0;
+    color: rgb(255, 255, 255);
     &:hover {
       opacity: 0.8;
     }
