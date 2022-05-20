@@ -18,6 +18,7 @@ export const Deliverer = () => {
   const { setIsActive, alarm } = useTimer(300000);
   const { setAuthRol } = useContext(RolContext);
   const [active, setActive] = useState(getDelivererState(user?.id, jwt));
+  // const [active, setActive] = useState(false);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -25,6 +26,14 @@ export const Deliverer = () => {
     setAuthRol("deliverer");
   }, [user]);
 
+  useEffect(() => {
+    async function updateDeliverer() {
+      await patchActivateDeliverer({ active }, user.id, jwt);
+    }
+    console.log(active, "AVTIVE VALUE");
+    if (user?.id) updateDeliverer();
+  }, [active, user]);
+  
   useEffect(() => {
     const getData = async () => {
       if (!user?.id) return;
@@ -42,26 +51,20 @@ export const Deliverer = () => {
     };
     if (active) getData();
     else setIsActive(false);
-  }, [user, alarm, active]);
+  }, [user, alarm]);
 
   const handleActivate = async () => {
     setActive(!active);
   };
 
-  useEffect(() => {
-    async function updateDeliverer() {
-      await patchActivateDeliverer({ active }, user.id, jwt);
-    }
-    if (user?.id) updateDeliverer();
-  }, [active]);
-
   return (
     <div>
-      <button className="button" onClick={handleActivate}>
-        {active ? "Salir" : "Activar"}
+      <button className={`button delierer-active-btn ${active ? "active":""}`} onClick={handleActivate}>
+        {active ? "Salir" : "Entrar"}
       </button>
       {active && (
-        <section>
+        <section className="deliverer-order-title" >
+          <h1 >PEDIDOS</h1>
           {orders.map((order, i) => (
             <OrderOptions delivery={order} key={`order-${i}`} />
           ))}
