@@ -9,3 +9,49 @@
   width: 100%;
   margin-top: 0.5rem;
 }
+.deliverer-order-title{
+      width: 80%;
+        margin: 0 auto;
+  & h1{
+    text-align: center;
+    color: $primaryColor;
+    padding: 1rem 0;
+
+    border-bottom: 1px solid $primaryColor;
+  }
+}
+
+.delierer-active-btn{
+  background-color: rgb(91, 175, 6);
+  position: absolute;
+  width: 5rem;
+  top: 3rem;
+  left: 2.5rem;
+  &.active {
+    background-color: red;
+  }
+}
+.deliverer-order-view{
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid $primaryColor;
+  & h6{
+    color: $primaryColor;
+    margin-bottom: 0.2rem;  
+  }
+  & p{
+    margin-top: 0;
+    font-size: 0.7rem;
+  }
+ & .active-btn{
+    width: 2rem;
+    border-radius: 50%;
+    font-size: .9rem;
+    height: 2rem;
+    align-self: flex-end;
+  }
+  & .option-btn{
+    margin: 0.5rem auto;
+    width:100%;
+  }
+}

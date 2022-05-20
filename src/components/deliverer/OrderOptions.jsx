@@ -8,26 +8,25 @@ import getSignature from "helpers/deliverer/getSignature";
 export const OrderOptions = ({ delivery }) => {
   const canvas = useRef(null);
   const { jwt, user } = useSession();
-  const [accept, setAccept] = useState(Boolean(delivery.id_repartidor));
+  const [accept, setAccept] = useState(Boolean(delivery.id_deliverer));
   const [order, setOrder] = useState(delivery);
   const [openSign, setOpenSign] = useState(false);
-  const [img, setImg] = useState();
-
+  
   useEffect(() => {
     if (!user.id) return;
 
     if (accept) {
       setOrder((prevState) => {
         let data = Object.assign({}, prevState);
-        data.id_repartidor = user.id;
-        data.estado = data.estado > 2 ? data.estado : 2;
+        data.id_deliverer = user.id;
+        data.state = data.state > 2 ? data.state : 2;
         return data;
       });
     } else {
       setOrder((prevState) => {
         let data = Object.assign({}, prevState);
-        data.id_repartidor = null;
-        data.estado = 1;
+        data.id_deliverer = null;
+        data.state = 1;
         return data;
       });
     }
@@ -38,7 +37,7 @@ export const OrderOptions = ({ delivery }) => {
     async function updateOrder() {
       await patchOrder(order, order.id, jwt);
       const image = await getSignature(order.id, jwt);
-      setImg(image);
+      // setImg(image);
     }
 
     updateOrder();
@@ -52,7 +51,7 @@ export const OrderOptions = ({ delivery }) => {
   const handlePickUp = () => {
     setOrder((prevState) => {
       let data = Object.assign({}, prevState);
-      data.estado = 3;
+      data.state = 3;
       return data;
     });
   };
@@ -62,7 +61,7 @@ export const OrderOptions = ({ delivery }) => {
     setOpenSign(false);
     setOrder((prevState) => {
       let data = Object.assign({}, prevState);
-      data.estado = 4;
+      data.state = 4;
       data.sign = image;
       return data;
     });
@@ -72,24 +71,39 @@ export const OrderOptions = ({ delivery }) => {
 
   return (
     <>
-      {order.estado < 4 && (
+   
+      {order.state < 4 && (
         <>
-          <article>
-            <h6>Paquete 1</h6>
-            <button className="button" onClick={handleAccept}>
-              {accept ? "Rechazar" : "Aceptar"} pedido
-            </button>
+          <article className="deliverer-order-view">
+            {/* desplegable */}
+            <div className="deliverer-order-data">
+              <h6>CÓDIGO</h6>
+              <p>{order.id}</p>
+              <h6>TIPO</h6>
+              <p>{order.pakage}</p>
+              <h6>DESDE</h6>
+              <p>{order.from}</p>
+              <h6>HASTA</h6>
+              <p>{order.to}</p>
+              <h6>FECHA RECOGIDA</h6>
+              <p>{order.pick_up_date}</p>
+              <h6>INSTRUCCIONES</h6>
+              <p>{order.comment}</p>
+            </div>
+            
             {accept && (
               <>
-                <button onClick={handlePickUp} className="button">
-                  Mercar recogido
-                </button>
-                <button className="button" onClick={() => setOpenSign(true)}>
+                {order.state === 2 &&<button onClick={handlePickUp} className="button option-btn">
+                  Marcar recogido
+                </button>}
+                {order.state === 3 && <button className="button option-btn" onClick={() => setOpenSign(true)}>
                   Firmar entrega
-                </button>
-                <button className="button">Ver pedido</button>
+                </button>}
               </>
             )}
+            <button className="button active-btn" onClick={handleAccept}>
+              {accept ? "-" : "+"}
+            </button>
           </article>
           <Modal onOpen={openSign} setOnOpen={setOpenSign}>
             <CanvasDraw ref={canvas} />
