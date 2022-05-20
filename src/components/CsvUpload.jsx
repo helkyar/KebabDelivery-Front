@@ -31,23 +31,23 @@ export const CsvUpload = () => {
     csvfile.data.forEach(async(order,i) => {
       console.log(order);
       if(i===0) return; //header
-      // id_client
+      if(order.length < 8) return;
       const pakage = { 
-        from: order[1], 
-        to: order[2], 
-        id_delivered: order[3], 
-        pick_up_date: order[4], 
-        pick_up_time: order[5],    
-        pakage: order[6],    
-        letter: order[7],    
-        comment: order[8],
+        from: order[0], 
+        to: order[1], 
+        id_delivered: order[2], 
+        pick_up_date: order[3], 
+        pick_up_time: order[4],    
+        pakage: order[5],    
+        letter: order[6],    
+        comment: order[7],
       };
     const data = await postOrder(pakage, jwt)
      const email = {
       to: user.email, 
       text: `Tu paquete ha sido registrado correctamente, usa el siguiente código para hacer el seguimiento ${data.id}`
     }
-      await sendEmail(email)
+      // await sendEmail(email)
     });
   },[csvfile, user])
 
