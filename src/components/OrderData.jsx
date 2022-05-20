@@ -11,6 +11,7 @@ export const OrderData = () => {
   const [phone, setPhone] = useState("");
   const { user, jwt } = useContext(Context);
   const { logout } = useSession();
+
   if (name === "" && data) {
     setName(data.user.name);
   }
@@ -41,10 +42,7 @@ export const OrderData = () => {
       getProfile();
     }
   }, [user]);
-  let test;
-  if (data !== "") {
-    test = Object.keys(data.user);
-  }
+
   return (
     <div className="my-data">
       <p className="my-data-title">Mis datos:</p>
