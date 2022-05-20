@@ -11,6 +11,7 @@ export const OrderData = () => {
   const [phone, setPhone] = useState("");
   const { user, jwt } = useContext(Context);
   const { logout } = useSession();
+
   if (name === "" && data) {
     setName(data.user.name);
   }
@@ -41,10 +42,7 @@ export const OrderData = () => {
       getProfile();
     }
   }, [user]);
-  let test;
-  if (data !== "") {
-    test = Object.keys(data.user);
-  }
+
   return (
     <div className="my-data">
       <p className="my-data-title">Mis datos:</p>
@@ -78,7 +76,8 @@ export const OrderData = () => {
             <p className={isDisabled ? "isDisabled" : "isEnabled"}>
               <label>Phone number: </label>{" "}
               <input
-                type="text"
+                type="tel"
+                pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
                 defaultValue={data.user.phone}
                 onChange={(e) => setPhone(e.target.value)}
                 disabled={isDisabled}
