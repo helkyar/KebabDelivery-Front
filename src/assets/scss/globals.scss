@@ -106,3 +106,11 @@ input:focus,
 textarea:focus {
   outline: 1px solid $primaryColor;
 }
+.error-view {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

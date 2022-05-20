@@ -1,15 +1,14 @@
-.map-view{
-    height: 60%;
+.map-view {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
 }
-.map{
-    width: 80%;
-    min-height: 55vh;
-    margin: 1rem auto; 
-    display: block;
-}
-.back-btn{
-    display: block;
-    width: 4rem;
-    margin-left: calc(50% - 2rem) ;
-    border-radius: $border-radius;
+.map {
+  width: 80%;
+  min-height: 55vh;
+  margin: 1rem auto;
+  display: block;
+  border-radius: 11px;
 }

@@ -56,19 +56,19 @@
 }
 @-webkit-keyframes slidein {
   0% {
-    transform: translateY(-20%);
+    transform: scaleY(0);
   }
 
   100% {
-    transform: translateY(0);
+    transform: scaleY(100%);
   }
 }
 @keyframes slidein {
   0% {
-    transform: translateY(-20%);
+    transform: scaleY(0%);
   }
 
   100% {
-    transform: translateY(0);
+    transform: scaleY(100%);
   }
 }
