@@ -60,7 +60,6 @@ export const OrderData = () => {
             <p className={isDisabled ? "isDisabled" : "isEnabled"}>
               <label>Name:</label>
               <input
-                className={isDisabled ? "isDisabled" : "isEnabled"}
                 type="text"
                 defaultValue={`${data.user.name}`}
                 onChange={(e) => setName(e.target.value)}
