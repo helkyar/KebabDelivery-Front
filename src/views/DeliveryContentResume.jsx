@@ -1,5 +1,5 @@
 import { Destination } from "components/destiny/Destination";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
   getStorageCart,
   postStorageCart,
@@ -9,6 +9,9 @@ import postOrder from "helpers/orders/postOrder";
 import Context from "../contexts/user";
 import Modal from "components/modal/Modal";
 import { NavLogIn } from "components/navBar/NavLogIn";
+import { Login } from "components/Login";
+import { Register } from "components/Register";
+import { ModalSession } from "components/modalSession/ModalSession";
 
 export const DeliveryContentResume = ({ props }) => {
   const [basket, setBasket] = useState(getStorageCart());
@@ -20,11 +23,13 @@ export const DeliveryContentResume = ({ props }) => {
   const hadleSubmit = (e) => {
     e.preventDefault();
     if (user?.id) {
-      tempOrder.id_client = user.id;
+      // tempOrder.id_client = user.id;
+      const time = new Date(basket.pick_up_time);
+      console.log(time);
 
-      setBasket(tempOrder);
-      postOrder(basket, jwt);
-      navigate("/shoppingCart");
+      // setBasket(tempOrder);
+      // postOrder(basket, jwt);
+      // navigate("/shoppingCart");
       // postStorageCart(null);
       // console.log(basket);
     } else {
@@ -41,14 +46,10 @@ export const DeliveryContentResume = ({ props }) => {
     navigate("/");
   };
 
-  // console.log(basket, "desde el resumen");
   return (
     <>
       <Modal onOpen={modalOpen} setOnOpen={setModalOpen}>
-        <div className="">
-          <button className="button">iniciar sesión</button>
-          <button className="button secondary-button">registrarse</button>
-        </div>
+        <ModalSession></ModalSession>
       </Modal>
       <form className="resumen-form" onSubmit={hadleSubmit}>
         <div className="resumen-section">

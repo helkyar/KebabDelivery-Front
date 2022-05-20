@@ -7,7 +7,6 @@ const getStorageCart = () => {
     pick_up_date: "",
     pick_up_time: "",
     delivered_time: "",
-    tracking_code: "",
     pakage: "",
     letter: "",
     comment: "",

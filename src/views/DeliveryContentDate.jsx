@@ -42,7 +42,7 @@ export const DeliveryContentDate = ({ props }) => {
         <input
           id="date"
           onChange={handleDate}
-          defaultValue={basket.date}
+          defaultValue={basket.pick_up_date}
           type="date"
           placeholder="Fecha"
           className="input-primary"
@@ -51,7 +51,7 @@ export const DeliveryContentDate = ({ props }) => {
         <input
           id="time"
           onChange={handleDate}
-          defaultValue={basket.time}
+          defaultValue={basket.pick_up_time}
           type="time"
           min="08:00"
           max="21:00"
