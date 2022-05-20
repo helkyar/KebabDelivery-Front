@@ -2,18 +2,37 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  margin: -1rem auto;
+  min-height: 20rem;
+  flex-grow: 0.2;
+  .my-data-title {
+    color: #ff8c60;
+  }
+}
+.my-data-form {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  border-radius: 15px;
+  flex-wrap: wrap;
   background-color: white;
-  max-width: 100vh;
+  min-height: 10rem;
   input {
     border: none;
   }
+  .button {
+    margin-top: 1.5rem;
+    align-self: center;
+  }
   .isDisabled {
-    color: blue;
-    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    color: #3c3c3ca5;
+    background-color: white;
     border: none;
   }
   .isEnabled {
-    color: red;
+    color: #000000;
   }
   .my-data-edit-icon {
     align-self: flex-end;
