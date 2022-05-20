@@ -41,7 +41,10 @@ export const OrderData = () => {
       getProfile();
     }
   }, [user]);
-
+  let test;
+  if (data !== "") {
+    test = Object.keys(data.user);
+  }
   return (
     <div className="my-data">
       <p className="my-data-title">Mis datos:</p>
@@ -54,27 +57,34 @@ export const OrderData = () => {
 
         {data !== "" ? (
           <>
-            <input
-              className={isDisabled ? "isDisabled" : "isEnabled"}
-              type="text"
-              defaultValue={`Name: ${data.user.name}`}
-              onChange={(e) => setName(e.target.value)}
-              disabled={isDisabled}
-            />
-            <input
-              className={isDisabled ? "isDisabled" : "isEnabled"}
-              type="text"
-              defaultValue={`Surname: ${data.user.surname}`}
-              onChange={(e) => setSurname(e.target.value)}
-              disabled={isDisabled}
-            />
-            <input
-              className={isDisabled ? "isDisabled" : "isEnabled"}
-              type="text"
-              defaultValue={`Phone Number: ${data.user.phone}`}
-              onChange={(e) => setPhone(e.target.value)}
-              disabled={isDisabled}
-            />
+            <p className={isDisabled ? "isDisabled" : "isEnabled"}>
+              <label>Name:</label>
+              <input
+                className={isDisabled ? "isDisabled" : "isEnabled"}
+                type="text"
+                defaultValue={`${data.user.name}`}
+                onChange={(e) => setName(e.target.value)}
+                disabled={isDisabled}
+              />
+            </p>
+            <p className={isDisabled ? "isDisabled" : "isEnabled"}>
+              <label>Surname:</label>
+              <input
+                type="text"
+                defaultValue={data.user.surname}
+                onChange={(e) => setSurname(e.target.value)}
+                disabled={isDisabled}
+              />
+            </p>
+            <p className={isDisabled ? "isDisabled" : "isEnabled"}>
+              <label>Phone number: </label>{" "}
+              <input
+                type="text"
+                defaultValue={data.user.phone}
+                onChange={(e) => setPhone(e.target.value)}
+                disabled={isDisabled}
+              />
+            </p>
           </>
         ) : null}
 
