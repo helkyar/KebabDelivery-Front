@@ -23,17 +23,12 @@ export const DeliveryContentResume = ({ props }) => {
   const hadleSubmit = (e) => {
     e.preventDefault();
     if (user?.id) {
-      // tempOrder.id_client = user.id;
-      const time = new Date(basket.pick_up_time);
-      console.log(time);
+      tempOrder.id_client = user.id;
 
-      // setBasket(tempOrder);
-      // postOrder(basket, jwt);
-      // navigate("/shoppingCart");
-      // postStorageCart(null);
-      // console.log(basket);
+      postOrder(tempOrder, jwt);
+      postStorageCart(null);
+      navigate("/shoppingCart");
     } else {
-      console.log("user.id");
       setModalOpen(true);
     }
 
@@ -51,7 +46,7 @@ export const DeliveryContentResume = ({ props }) => {
       <Modal onOpen={modalOpen} setOnOpen={setModalOpen}>
         <ModalSession></ModalSession>
       </Modal>
-      <form className="resumen-form" onSubmit={hadleSubmit}>
+      <div className="resumen-form">
         <div className="resumen-section">
           <div>
             <h4 className="resumen-titles">paquete</h4>
@@ -91,8 +86,10 @@ export const DeliveryContentResume = ({ props }) => {
         >
           edit
         </button>
-        <button className="button ">añadir al carrito</button>
-      </form>
+        <button onClick={hadleSubmit} className="button ">
+          añadir al carrito
+        </button>
+      </div>
     </>
   );
 };

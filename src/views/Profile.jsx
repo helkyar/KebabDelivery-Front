@@ -7,8 +7,7 @@ export const Profile = () => {
     <>
       <div className="profile-view">
         <OrderData />
-        <ButtonCard size={"small"} titleButton={"Mis pedidos"} />
-        <ButtonCard size={"small"} titleButton={"Direcciones favoritas"} />
+        <ButtonCard size={"small"} titleButton={"Mis pedidos"}></ButtonCard>
       </div>
     </>
   );

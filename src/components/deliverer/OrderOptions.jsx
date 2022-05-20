@@ -11,7 +11,7 @@ export const OrderOptions = ({ delivery }) => {
   const [accept, setAccept] = useState(Boolean(delivery.id_deliverer));
   const [order, setOrder] = useState(delivery);
   const [openSign, setOpenSign] = useState(false);
-  
+
   useEffect(() => {
     if (!user.id) return;
 
@@ -71,7 +71,6 @@ export const OrderOptions = ({ delivery }) => {
 
   return (
     <>
-   
       {order.state < 4 && (
         <>
           <article className="deliverer-order-view">
@@ -90,15 +89,22 @@ export const OrderOptions = ({ delivery }) => {
               <h6>INSTRUCCIONES</h6>
               <p>{order.comment}</p>
             </div>
-            
+
             {accept && (
               <>
-                {order.state === 2 &&<button onClick={handlePickUp} className="button option-btn">
-                  Marcar recogido
-                </button>}
-                {order.state === 3 && <button className="button option-btn" onClick={() => setOpenSign(true)}>
-                  Firmar entrega
-                </button>}
+                {order.state === 2 && (
+                  <button onClick={handlePickUp} className="button option-btn">
+                    Marcar recogido
+                  </button>
+                )}
+                {order.state === 3 && (
+                  <button
+                    className="button option-btn"
+                    onClick={() => setOpenSign(true)}
+                  >
+                    Firmar entrega
+                  </button>
+                )}
               </>
             )}
             <button className="button active-btn" onClick={handleAccept}>
