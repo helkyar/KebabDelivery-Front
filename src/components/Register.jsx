@@ -42,7 +42,6 @@ export const Register = () => {
   const validCredentials = () => {
     //(!) Validation logic: should be separated form the view
     if (!name.trim() || !password.trim()) {
-      console.log("Introduce valid credentials");
       return;
     }
 
@@ -99,23 +98,17 @@ export const Register = () => {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
         />
-        <input
-          className="register-data"
-          placeholder="Contraseña"
-          type="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
 
-        {user?.rol === "admin" && (
+        {user?.rol?.trim() === "admin" && (
           <select onChange={handleRolChange}>
             <option value="admin">Administrador</option>
             <option value="deliverer">Repartidor</option>
             <option value="client">Cliente</option>
           </select>
         )}
-        <button className="button register-button">Registrarme</button>
+        <button className="button register-button">
+          {user?.rol?.trim() !== "admin" ? "Registrarme" : "Crear"}
+        </button>
       </form>
     </>
   );

@@ -8,9 +8,11 @@ import getSignature from "helpers/deliverer/getSignature";
 export const OrderOptions = ({ delivery }) => {
   const canvas = useRef(null);
   const { jwt, user } = useSession();
-  const [accept, setAccept] = useState(Boolean(delivery.id_deliverer));
+  const [accept, setAccept] = useState(Boolean(delivery.id_delivered));
   const [order, setOrder] = useState(delivery);
   const [openSign, setOpenSign] = useState(false);
+
+  console.log("ORDER", order);
 
   useEffect(() => {
     if (!user.id) return;
@@ -18,14 +20,14 @@ export const OrderOptions = ({ delivery }) => {
     if (accept) {
       setOrder((prevState) => {
         let data = Object.assign({}, prevState);
-        data.id_deliverer = user.id;
+        data.id_delivered = user.id;
         data.state = data.state > 2 ? data.state : 2;
         return data;
       });
     } else {
       setOrder((prevState) => {
         let data = Object.assign({}, prevState);
-        data.id_deliverer = null;
+        data.id_delivered = null;
         data.state = 1;
         return data;
       });
@@ -92,12 +94,12 @@ export const OrderOptions = ({ delivery }) => {
 
             {accept && (
               <>
-                {order.state === 2 && (
+                {order.state == 2 && (
                   <button onClick={handlePickUp} className="button option-btn">
                     Marcar recogido
                   </button>
                 )}
-                {order.state === 3 && (
+                {order.state == 3 && (
                   <button
                     className="button option-btn"
                     onClick={() => setOpenSign(true)}

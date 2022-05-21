@@ -15,9 +15,8 @@ export const Profile = () => {
     if (user?.id) {
       const orders = async () => {
         const data = await getOrders(user.id, jwt);
-        console.log(data);
         const cart = data?.filter(
-          (element) => element.state > "0" && element.state < "4"
+          (element) => element.state > "0" && element.id_client === user.id
         );
         setOrders(cart);
       };
@@ -40,6 +39,10 @@ export const Profile = () => {
                   className="resumen-form container-orders-profile"
                 >
                   <div className="resumen-section orders-profile">
+                    <div>
+                      <h4 className="resumen-titles">CÓDIGO</h4>
+                      <p>{order.id}</p>
+                    </div>
                     <div>
                       <h4 className="resumen-titles">DESDE</h4>
                       <p>{order.from}</p>

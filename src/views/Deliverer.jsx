@@ -18,7 +18,6 @@ export const Deliverer = () => {
   const { setIsActive, alarm } = useTimer(60000);
   const { setAuthRol } = useContext(RolContext);
   const [active, setActive] = useState(getDelivererState(user?.id, jwt));
-  // const [active, setActive] = useState(false);
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
@@ -30,7 +29,6 @@ export const Deliverer = () => {
     async function updateDeliverer() {
       await patchActivateDeliverer({ active }, user.id, jwt);
     }
-    console.log(active, "AVTIVE VALUE");
     if (user?.id) updateDeliverer();
   }, [active, user]);
 
@@ -39,9 +37,9 @@ export const Deliverer = () => {
       if (!user?.id) return;
       if (alarm) setIsActive(true);
 
-      // const { location } = await fetchCoordinates(jwt);
-      // const params = { latitude: location.lat, longitude: location.lng };
-      // await patchDelivererCoordinates(params, user.id, jwt);
+      const { location } = await fetchCoordinates(jwt);
+      const params = { latitude: location.lat, longitude: location.lng };
+      await patchDelivererCoordinates(params, user.id, jwt);
 
       const state = await getDelivererState(user.id, jwt);
       if (state) setActive(state.active);

@@ -2,7 +2,6 @@ import { Login } from "components/Login";
 import Modal from "components/modal/Modal";
 import { Register } from "components/Register";
 import { useState, useEffect, useContext } from "react";
-import Context from "contexts/user";
 import { useSession } from "helpers/session/useSession";
 import { useNavigate } from "react-router-dom";
 const useModal = () => {
@@ -19,29 +18,28 @@ const useModal = () => {
 
 const NavLogIn = () => {
   const { openLogIn, openSignUp, logIn, signUp } = useModal();
-  const { jwt, user } = useContext(Context);
+  const { user, isLogged } = useSession();
   const navigate = useNavigate();
   const { logout } = useSession();
 
   return (
     <>
-      {jwt ? (
+      {isLogged ? (
         <div className="container-log">
           <button className="nav-option" onClick={logout}>
-            Log out{" "}
+            Log out
           </button>
           <button className="nav-option" onClick={() => navigate("/profile")}>
-            Profile{" "}
+            Profile
           </button>
+          {user?.rol?.trim() === "admin" && (
+            <button className="nav-option" onClick={() => openSignUp(!signUp)}>
+              Crear Usuario
+            </button>
+          )}
         </div>
       ) : (
         <>
-          <Modal onOpen={logIn} setOnOpen={openLogIn}>
-            <Login />
-          </Modal>
-          <Modal onOpen={signUp} setOnOpen={openSignUp}>
-            <Register />
-          </Modal>
           <div className="container-log">
             <button className="button" onClick={openLogIn}>
               iniciar sesión
@@ -49,9 +47,15 @@ const NavLogIn = () => {
             <button className="button secondary-button" onClick={openSignUp}>
               registrarse
             </button>
-          </div>{" "}
+          </div>
         </>
       )}
+      <Modal onOpen={signUp} setOnOpen={openSignUp}>
+        <Register />
+      </Modal>
+      <Modal onOpen={logIn} setOnOpen={openLogIn}>
+        <Login />
+      </Modal>
     </>
   );
 };

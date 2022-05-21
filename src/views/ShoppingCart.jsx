@@ -19,8 +19,9 @@ export const ShoppingCart = () => {
     if (user?.id) {
       const orders = async () => {
         const data = await getOrders(user.id, jwt);
-        console.log(data);
-        const cart = data?.filter((element) => element.state == "0");
+        const cart = data?.filter(
+          (element) => element.state == "0" && element.id_client === user.id
+        );
         setOrders(cart);
       };
       orders();

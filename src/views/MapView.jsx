@@ -20,14 +20,13 @@ export const MapView = () => {
     async function coordinates() {
       if (alarm) setIsActive(true);
       const position = await getCoordinates(params.id, jwt);
+      console.log("COORDINATES", position?.latitude, position?.longitude);
       setLtd(position?.latitude ? position.latitude : "");
       setLng(position?.longitude ? position.longitude : "");
       setState(position?.state ? parseInt(position.state) - 1 : 0);
     }
     if (params.id) coordinates();
   }, [params, alarm]);
-
-  console.log(ltd, lng, state);
 
   return (
     <div className="map-view">
@@ -38,7 +37,7 @@ export const MapView = () => {
       {state < 3 ? (
         <iframe
           className="map"
-          src={`https://maps.google.com/maps?q=${ltd},${lng},spain&output=embed`}
+          src={`https://maps.google.com/maps?q=${ltd},${lng}&output=embed`}
           frameBorder="0"
         ></iframe>
       ) : (

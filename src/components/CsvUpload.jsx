@@ -5,10 +5,12 @@ import Papa from "papaparse";
 import { useEffect } from "react";
 import { useRef, useState } from "react";
 import { CSVLink } from "react-csv";
+import { useNavigate } from "react-router-dom";
 import Modal from "./modal/Modal";
 import { ModalSession } from "./modalSession/ModalSession";
 
 export const CsvUpload = () => {
+  const navigate = useNavigate();
   const [csvfile, setCsvfile] = useState();
   const [openModal, setOpenModal] = useState();
   const { jwt, isLogged, user } = useSession();
@@ -35,8 +37,6 @@ export const CsvUpload = () => {
     }
     if (!csvfile?.data || !user?.id) return;
 
-    console.log(isLogged, csvfile?.data, user?.id);
-
     csvfile.data.forEach(async (order, i) => {
       console.log(order, "FOREACH");
       if (i < 2) return; //header
@@ -51,13 +51,14 @@ export const CsvUpload = () => {
         id_client: user.id,
       };
       const data = await postOrder(pakage, jwt);
-      console.log(data, "DATA");
+
       // const email = {
       //   to: user.email,
       //   text: `Tu paquete ha sido registrado correctamente, usa el siguiente código para hacer el seguimiento ${data.id}`,
       // };
       // await sendEmail(email)
     });
+    navigate("/shoppingCart");
   }, [csvfile, user]);
 
   return (
