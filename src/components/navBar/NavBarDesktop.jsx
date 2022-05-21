@@ -1,19 +1,20 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Nav } from "./Nav";
 import { NavLogIn } from "./NavLogIn";
 
 const NavDesktop = () => {
   const [log, setLog] = useState(false);
-  const hola = () => {
-    console.log("hola");
-  };
+  const navigate = useNavigate();
 
   return (
     <>
       <div className="container-navbar">
         <div className="container-nav-desktop">
           <div className="nav-desktop">
-            <h1 className="logo">Kometa</h1>
+            <h1 className="logo" onClick={() => navigate("/")}>
+              Kometa
+            </h1>
             <Nav />
           </div>
           <div className="container-button-log">

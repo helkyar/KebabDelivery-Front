@@ -43,7 +43,7 @@ export const ShoppingCart = () => {
         <>
           <h1>
             {orders?.length > 0
-              ? "hola"
+              ? "tu carrito"
               : "Tu carrito esta vacio como tus pelotas"}
           </h1>
           {orders?.map((order, key) => {
@@ -79,7 +79,10 @@ export const ShoppingCart = () => {
                     <h4 className="resumen-titles">instrucciones</h4>
                     <p>{order.comment}</p>
                   </div>
-                  <button onClick={() => hadleSubmit(order)} className="button">
+                  <button
+                    onClick={() => hadleSubmit(order)}
+                    className="button button-oreders-profile"
+                  >
                     pagar
                   </button>
                 </div>

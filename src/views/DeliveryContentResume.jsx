@@ -46,6 +46,7 @@ export const DeliveryContentResume = ({ props }) => {
       <Modal onOpen={modalOpen} setOnOpen={setModalOpen}>
         <ModalSession></ModalSession>
       </Modal>
+
       <div className="resumen-form">
         <div className="resumen-section">
           <div>

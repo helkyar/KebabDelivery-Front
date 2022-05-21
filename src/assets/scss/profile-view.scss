@@ -7,8 +7,9 @@
 
   @media (max-width: 646px) {
     flex-direction: column;
-    .my-data {
-      min-height: auto;
-    }
+
+    align-items: center;
+
+
   }
 }
