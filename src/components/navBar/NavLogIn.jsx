@@ -33,9 +33,20 @@ const NavLogIn = () => {
             Profile
           </button>
           {user?.rol?.trim() === "admin" && (
-            <button className="nav-option" onClick={() => openSignUp(!signUp)}>
-              Crear Usuario
-            </button>
+            <>
+              <button
+                className="nav-option"
+                onClick={() => navigate("/adminview")}
+              >
+                Repartidores
+              </button>
+              <button
+                className="nav-option"
+                onClick={() => openSignUp(!signUp)}
+              >
+                Crear Usuario
+              </button>
+            </>
           )}
         </div>
       ) : (

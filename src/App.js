@@ -14,6 +14,8 @@ import { Deliverer } from "views/Deliverer";
 import { RolAuthContextProvider } from "contexts/rolAuth";
 import { ShoppingCart } from "views/ShoppingCart";
 import { MapView } from "views/MapView";
+import { AdminView } from "views/AdminView";
+import { MapsAdmin } from "views/MapsAdmin";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/stepshop" element={<StepShop />} />
+            <Route path="/adminview" element={<AdminView />} />
+            <Route path="/mapsadmin/:id" element={<MapsAdmin />} />
             <Route path="/deliverer" element={<Deliverer />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/shoppingCart" element={<ShoppingCart />} />
