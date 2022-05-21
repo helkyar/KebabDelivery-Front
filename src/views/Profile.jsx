@@ -30,10 +30,13 @@ export const Profile = () => {
       <div className="profile-view">
         <OrderData />
         <ButtonCard size={"big"} titleButton={"Mis pedidos"}>
-          <div className="container-orders-profile">
+          <div className="">
             {orders?.map((order, key) => {
               return (
-                <div key={key} className="resumen-form ">
+                <div
+                  key={key}
+                  className="resumen-form container-orders-profile"
+                >
                   <div className="resumen-section orders-profile">
                     <div>
                       <h4 className="resumen-titles">DESDE</h4>

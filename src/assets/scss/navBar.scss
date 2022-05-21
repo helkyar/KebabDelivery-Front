@@ -5,6 +5,7 @@
   left: 0;
   height: 72px;
   width: 100%;
+  z-index: 200;
 
   @media (min-width: $movil) {
     position: relative;
@@ -81,6 +82,9 @@
     flex-direction: row;
     justify-content: flex-end;
     gap: 20px;
+  }
+  .nav-item {
+    cursor: pointer;
   }
 }
 
