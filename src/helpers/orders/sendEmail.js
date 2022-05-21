@@ -1,4 +1,4 @@
-// // CREATE FAKE ACCOUNT : https://ethereal.email/create
+// CREATE FAKE ACCOUNT : https://ethereal.email/create
 
 // const nodemailer = require("nodemailer");
 
@@ -35,7 +35,7 @@
 //   // Preview only available when sending through an Ethereal account
 //   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
 //   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-// }
+// };
 
 // // main().catch(console.error);
 // export default sendEmail;
