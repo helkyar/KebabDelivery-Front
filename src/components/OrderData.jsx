@@ -11,6 +11,7 @@ export const OrderData = () => {
   const [phone, setPhone] = useState("");
   const { user, jwt } = useContext(Context);
   const { logout } = useSession();
+
   if (name === "" && data) {
     setName(data.user.name);
   }
@@ -54,27 +55,34 @@ export const OrderData = () => {
 
         {data !== "" ? (
           <>
-            <input
-              className={isDisabled ? "isDisabled" : "isEnabled"}
-              type="text"
-              defaultValue={`Name: ${data.user.name}`}
-              onChange={(e) => setName(e.target.value)}
-              disabled={isDisabled}
-            />
-            <input
-              className={isDisabled ? "isDisabled" : "isEnabled"}
-              type="text"
-              defaultValue={`Surname: ${data.user.surname}`}
-              onChange={(e) => setSurname(e.target.value)}
-              disabled={isDisabled}
-            />
-            <input
-              className={isDisabled ? "isDisabled" : "isEnabled"}
-              type="text"
-              defaultValue={`Phone Number: ${data.user.phone}`}
-              onChange={(e) => setPhone(e.target.value)}
-              disabled={isDisabled}
-            />
+            <p className={isDisabled ? "isDisabled" : "isEnabled"}>
+              <label>Name:</label>
+              <input
+                type="text"
+                defaultValue={`${data.user.name}`}
+                onChange={(e) => setName(e.target.value)}
+                disabled={isDisabled}
+              />
+            </p>
+            <p className={isDisabled ? "isDisabled" : "isEnabled"}>
+              <label>Surname:</label>
+              <input
+                type="text"
+                defaultValue={data.user.surname}
+                onChange={(e) => setSurname(e.target.value)}
+                disabled={isDisabled}
+              />
+            </p>
+            <p className={isDisabled ? "isDisabled" : "isEnabled"}>
+              <label>Phone number: </label>{" "}
+              <input
+                type="tel"
+                pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
+                defaultValue={data.user.phone}
+                onChange={(e) => setPhone(e.target.value)}
+                disabled={isDisabled}
+              />
+            </p>
           </>
         ) : null}
 

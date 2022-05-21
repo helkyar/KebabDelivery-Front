@@ -25,14 +25,20 @@
     align-self: center;
   }
   .isDisabled {
-    display: flex;
-    flex-wrap: wrap;
     color: #3c3c3ca5;
-    background-color: white;
+    text-decoration: none;
     border: none;
+    input {
+      background-color: transparent;
+      width: 50%;
+    }
   }
   .isEnabled {
-    color: #000000;
+    color: #363636d0;
+    input {
+      border: solid 1px #ff8c60;
+      width: 50%;
+    }
   }
   .my-data-edit-icon {
     align-self: flex-end;
