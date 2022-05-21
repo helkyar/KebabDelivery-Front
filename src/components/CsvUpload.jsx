@@ -5,9 +5,12 @@ import Papa from "papaparse";
 import { useEffect } from "react";
 import { useRef, useState } from "react";
 import { CSVLink } from "react-csv";
+import Modal from "./modal/Modal";
+import { ModalSession } from "./modalSession/ModalSession";
 
 export const CsvUpload = () => {
   const [csvfile, setCsvfile] = useState();
+  const [openModal, setOpenModal] = useState();
   const { jwt, isLogged, user } = useSession();
   const fileInput = useRef(null);
 
@@ -16,6 +19,10 @@ export const CsvUpload = () => {
   };
 
   const importCSV = () => {
+    if (!isLogged) {
+      setOpenModal(true);
+      return;
+    }
     Papa.parse(csvfile, {
       complete: (results) => setCsvfile(results),
     });
@@ -23,13 +30,17 @@ export const CsvUpload = () => {
 
   useEffect(() => {
     if (!isLogged) {
-      // open modal
+      setOpenModal(true);
       return;
     }
-    if (!csvfile?.data || user?.email) return;
+    if (!csvfile?.data || !user?.id) return;
+
+    console.log(isLogged, csvfile?.data, user?.id);
+
     csvfile.data.forEach(async (order, i) => {
+      console.log(order, "FOREACH");
       if (i < 2) return; //header
-      if (order.length < 7) return;
+      if (order.length < 6) return;
       const pakage = {
         from: order[0],
         to: order[1],
@@ -37,30 +48,31 @@ export const CsvUpload = () => {
         pakage: order[3],
         letter: order[4],
         comment: order[5],
+        id_client: user.id,
       };
-      pakage.id_client = user.id;
       const data = await postOrder(pakage, jwt);
-      const email = {
-        to: user.email,
-        text: `Tu paquete ha sido registrado correctamente, usa el siguiente código para hacer el seguimiento ${data.id}`,
-      };
+      console.log(data, "DATA");
+      // const email = {
+      //   to: user.email,
+      //   text: `Tu paquete ha sido registrado correctamente, usa el siguiente código para hacer el seguimiento ${data.id}`,
+      // };
       // await sendEmail(email)
     });
   }, [csvfile, user]);
 
-  console.log(csvfile, "CSV");
-
   return (
     <div className="csv-form">
-      <input
-        className="csv-input"
-        type="file"
-        ref={fileInput}
-        name="file"
-        placeholder={null}
-        onChange={handleChange}
-      />
-      <button onClick={importCSV}> Process File! </button>
+      <div>
+        <input
+          className="csv-input"
+          type="file"
+          ref={fileInput}
+          name="file"
+          placeholder={null}
+          onChange={handleChange}
+        />
+        <button onClick={importCSV}> Enviar! </button>
+      </div>
       <CSVLink
         data={[
           {
@@ -80,9 +92,13 @@ export const CsvUpload = () => {
           { label: "Letter ", key: "letter" },
           { label: "Comment ", key: "comment" },
         ]}
+        className="button"
       >
-        Download CSV Template
+        Descargar Template
       </CSVLink>
+      <Modal onOpen={openModal} setOnOpen={setOpenModal}>
+        <ModalSession />
+      </Modal>
     </div>
   );
 };

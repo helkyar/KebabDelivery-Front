@@ -15,7 +15,7 @@ export const Deliverer = () => {
   //Docs : https://developers.google.com/maps/documentation/geolocation/overview?_gl=1*m0lnpa*_ga*MTcwNjUzNTg1MS4xNjQ1NjIxMjIx*_ga_NRWSTWS78N*MTY1MjQyOTc3MS4xLjEuMTY1MjQyOTc4Ny4w
   const navigate = useNavigate();
   const { user, jwt, isLogged } = useSession();
-  const { setIsActive, alarm } = useTimer(300000);
+  const { setIsActive, alarm } = useTimer(60000);
   const { setAuthRol } = useContext(RolContext);
   const [active, setActive] = useState(getDelivererState(user?.id, jwt));
   // const [active, setActive] = useState(false);
@@ -33,7 +33,7 @@ export const Deliverer = () => {
     console.log(active, "AVTIVE VALUE");
     if (user?.id) updateDeliverer();
   }, [active, user]);
-  
+
   useEffect(() => {
     const getData = async () => {
       if (!user?.id) return;
@@ -59,12 +59,15 @@ export const Deliverer = () => {
 
   return (
     <div>
-      <button className={`button delierer-active-btn ${active ? "active":""}`} onClick={handleActivate}>
+      <button
+        className={`button delierer-active-btn ${active ? "active" : ""}`}
+        onClick={handleActivate}
+      >
         {active ? "Salir" : "Entrar"}
       </button>
       {active && (
-        <section className="deliverer-order-title" >
-          <h1 >PEDIDOS</h1>
+        <section className="deliverer-order-title">
+          <h1>PEDIDOS</h1>
           {orders.map((order, i) => (
             <OrderOptions delivery={order} key={`order-${i}`} />
           ))}

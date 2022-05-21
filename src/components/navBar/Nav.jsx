@@ -7,7 +7,6 @@ const Nav = () => {
       <nav className="nav">
         <p onClick={() => navigate("/")}>inicio</p>
         <p onClick={() => navigate("/shoppingCart")}>cart</p>
-        <p>entregas</p>
       </nav>
     </>
   );

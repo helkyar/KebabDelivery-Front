@@ -62,8 +62,21 @@
   border-bottom-right-radius: 8px;
 }
 
-.csv-form{
+.csv-form {
   display: flex;
-  justify-content: space-around;
-  margin-top: 1rem;
+  flex-direction: column;
+  align-items: center;
+  & input {
+    width: 12rem;
+  }
+  & a {
+    text-align: center;
+    padding-top: 0.5rem;
+    text-decoration: none;
+  }
+  & div {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
 }

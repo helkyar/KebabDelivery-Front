@@ -5,8 +5,10 @@ import getOrders from "helpers/client/getOrders";
 import { useSession } from "helpers/session/useSession";
 import patchOrder from "helpers/orders/patchOrder";
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const ShoppingCart = () => {
+  const navigate = useNavigate();
   const { user, jwt, isLogged } = useSession();
   const [orders, setOrders] = useState();
 
@@ -23,6 +25,12 @@ export const ShoppingCart = () => {
       orders();
     }
   }, [user, actualization]);
+
+  useEffect(() => {
+    if (modalOpen) return;
+    if (!isLogged) navigate("/");
+  }, [modalOpen]);
+
   const hadleSubmit = async (order) => {
     order.state = 1;
     let data = await patchOrder(order, order.id, jwt);
