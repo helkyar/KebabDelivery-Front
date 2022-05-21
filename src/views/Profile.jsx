@@ -16,7 +16,9 @@ export const Profile = () => {
       const orders = async () => {
         const data = await getOrders(user.id, jwt);
         console.log(data);
-        const cart = data?.filter((element) => element.state > "0");
+        const cart = data?.filter(
+          (element) => element.state > "0" && element.state < "4"
+        );
         setOrders(cart);
       };
       orders();
@@ -49,10 +51,6 @@ export const Profile = () => {
                     <div>
                       <h4 className="resumen-titles">fecha</h4>
                       <p>{order.pick_up_date}</p>
-                    </div>
-                    <div>
-                      <h4 className="resumen-titles">hora</h4>
-                      <p>{order.pick_up_time}</p>
                     </div>
 
                     <button

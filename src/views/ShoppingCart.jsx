@@ -6,6 +6,7 @@ import { useSession } from "helpers/session/useSession";
 import patchOrder from "helpers/orders/patchOrder";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import delOrder from "helpers/orders/delOrder";
 
 export const ShoppingCart = () => {
   const navigate = useNavigate();
@@ -33,7 +34,12 @@ export const ShoppingCart = () => {
 
   const hadleSubmit = async (order) => {
     order.state = 1;
-    let data = await patchOrder(order, order.id, jwt);
+    await patchOrder(order, order.id, jwt);
+    setActualization(!actualization);
+  };
+  const hadleDelete = async (order) => {
+    order.state = 1;
+    await delOrder(order.id, jwt);
     setActualization(!actualization);
   };
 
@@ -41,10 +47,8 @@ export const ShoppingCart = () => {
     <>
       {isLogged ? (
         <>
-          <h1>
-            {orders?.length > 0
-              ? "tu carrito"
-              : "Tu carrito esta vacio como tus pelotas"}
+          <h1 className="cart-title">
+            {orders?.length > 0 ? "Tu carrito" : "Tu carrito esta vacio"}
           </h1>
           {orders?.map((order, key) => {
             return (
@@ -72,10 +76,6 @@ export const ShoppingCart = () => {
                     <p>{order.pick_up_date}</p>
                   </div>
                   <div>
-                    <h4 className="resumen-titles">hora</h4>
-                    <p>{order.pick_up_time}</p>
-                  </div>
-                  <div>
                     <h4 className="resumen-titles">instrucciones</h4>
                     <p>{order.comment}</p>
                   </div>
@@ -84,6 +84,12 @@ export const ShoppingCart = () => {
                     className="button button-oreders-profile"
                   >
                     pagar
+                  </button>
+                  <button
+                    onClick={() => hadleDelete(order)}
+                    className="button delete button-oreders-profile"
+                  >
+                    Eliminar
                   </button>
                 </div>
               </div>

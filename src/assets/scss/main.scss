@@ -80,3 +80,14 @@
     margin-top: 1rem;
   }
 }
+
+.cart-title {
+  color: $primaryColor;
+  padding: 0.5rem;
+  border-bottom: 1px solid $primaryColor;
+  text-align: center;
+}
+.delete {
+  margin-top: 0.5rem;
+  background-color: red;
+}

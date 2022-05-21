@@ -32,7 +32,7 @@ export const MapView = () => {
   return (
     <div className="map-view">
       <Stepper
-        titles={["asignado", "recogido", "en camino", "entregado"]}
+        titles={["creado", "asignado", "en camino", "entregado"]}
         step={state}
       />
       {state < 3 ? (
